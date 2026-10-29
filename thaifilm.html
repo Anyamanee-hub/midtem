@@ -8,22 +8,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&family=Caveat:wght@400;500&display=swap"
-        rel="stylesheet" <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Charmonman:wght@400;700&family=Noto+Sans+Thai:wght@100..900&family=Pattaya&display=swap"
-        rel="stylesheet">
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&family=Caveat:wght@400;500&family=Noto+Sans+Thai:wght@100..900&display=swap"
+        rel="stylesheet" />
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="thaifilm.css">
 
 </head>
 
-<body class="thai-films-page">
-    <main class="thai-shell">
-        <header class="site-header thai-header">
+<body>
+    <main class="screen">
+              <div class="hero-image"></div>
+      <div class="shade"></div>
+        <header class="site-header">
             <a class="wordmark" href="index.html">CHARACTERS<br>THAT STAY</a>
             <nav class="main-nav" aria-label="Main navigation">
                 <a href="index.html">HOME</a>
@@ -34,15 +31,16 @@
             <button class="menu-toggle" type="button" aria-label="Open menu">☰</button>
         </header>
 
-        <section class="thai-intro">
-            <p class="thai-eyebrow">COLLECTION / THAI FILMS Characters </p>
-            <h1>Thai Films Characters </h1>
-            <p class="thai-intro-copy">ตัวละครไทยที่ทิ้งบางความรู้สึกไว้กับเรา บางตัวละคร
-                มักเจอเรื่องราว<br>หรือเกิดความรู้สึกที่เป็นเรื่องใกล้ตัว ให้ความรู้สึกเหมือนเกิดขึ้นกับตัวเองจริงๆ</p>
-            <a class="back-link" href="story.html">← BACK TO STORY</a>
+        <section class="hero-content page-hero">
+            <p class="eyebrow">COLLECTION / THAI FILMS</p>
+            <h1>Thai Films<br /><span>Characters</span></h1>
+            <p class="intro">ตัวละครไทยที่ทิ้งบางความรู้สึกไว้กับเรา บางตัวละครมักเจอเรื่องราว<br class="desktop-break" />
+                หรือเกิดความรู้สึกที่เป็นเรื่องใกล้ตัว ให้ความรู้สึกเหมือนเกิดขึ้นกับตัวเองจริงๆ</p>
+            <a class="explore-link" href="story.html">← BACK TO STORY</a>
         </section>
 
         <section class="character-collection">
+            <div class="archive-frame">
             <div class="collection-topline"><span>PERSONAL ARCHIVE</span><span>08 CHARACTERS</span></div>
             <div class="character-grid">
                 <a class="character-card" href="character-detail.html?id=nam">
@@ -61,7 +59,7 @@
                     <p>ความสัมพันธ์ที่เต็มไปด้วยความรู้สึกที่ไม่ได้พูดออกมา</p>
                 </a>
                 <a class="character-card" href="character-detail.html?id=mew">
-                    <div class="character-image"><img src="images/mew.jpg " class="mew-image">
+                    <div class="character-image"><img src="images/mew.jpg" class="mew-image">
                         <span class="card-index">03</span><span class="card-open">VIEW STORY ↗</span>
                     </div>
                     <div class="character-meta"><span>รักแห่งสยาม</span><span>THAI FILM</span></div>
@@ -105,6 +103,7 @@
                     <p>เส้นแบ่งระหว่างความถูกต้องกับความต้องการ</p>
                 </a>
             </div>
+            </div>
 
             <footer class="site-footer" id="about"><span>CHARACTERS THAT STAY</span><span>ANYAMANEE POKAMAS &amp;
                     68005463</span><a href="thaifilm.html">BACK TO TOP ↑</a></footer>
@@ -120,7 +119,7 @@
                 });
             }
         </script>
-        <main>
+    </main>
 </body>
 
 </html>

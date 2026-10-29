@@ -1,549 +1,184 @@
-/* ===== THAI FILMS PAGE LAYOUT ===== */
+/* thaifilm.css — โหลดต่อจาก style.css (หน้า index)
+   ไฟล์นี้มีเฉพาะส่วนที่หน้า Thai Films ต้องใช้เพิ่ม
+   ส่วนอื่น (header, nav, h1, .intro, .eyebrow, .explore-link, .site-footer ฯลฯ) ใช้จาก style.css */
 
-* {
-    box-sizing: border-box;
+/* พื้นหลัง hero + shade: ใน index หน้ามีความสูงเท่าจอเดียว
+   แต่หน้านี้ยาวกว่า จึงล็อกความสูงไว้ไม่ให้ภาพ/ไล่เฉดยืดทั้งหน้า */
+.hero-image {
+  inset: 0 0 auto;
+  height: 640px;
+}
+.shade {
+  inset: 0 0 auto;
+  height: 760px;
+}
+.screen { background: #111716; }
+
+/* ส่วนหัวของหน้า ใช้ .hero-content เหมือน index แต่เตี้ยลง */
+.page-hero {
+  min-height: 340px;
+  padding-bottom: 28px;
+  max-width: 720px;
+}
+.page-hero .intro { max-width: 560px; }
+
+/* ปุ่มกลับ ใช้ .explore-link ของ index */
+.page-hero .explore-link { width: fit-content; }
+
+/* ===== Character collection ===== */
+.character-collection { padding: 0 0 8px; }
+
+/* ===== กรอบ PERSONAL ARCHIVE — ปรับระยะได้ที่ตัวแปรชุดนี้ =====
+   --frame-margin-x : ระยะห่างกรอบจากขอบซ้าย/ขวาของหน้า
+   --frame-margin-top / bottom : ระยะห่างกรอบจากส่วนบน (intro) และส่วนล่าง (footer)
+   --frame-pad-x / --frame-pad-y : ระยะห่างจากเส้นกรอบเข้าไปถึงเนื้อหาข้างใน
+   --frame-radius : ความโค้งของมุม (0 = มุมเหลี่ยม)
+   --frame-bg : สีพื้นในกรอบ (ใส่ transparent ถ้าไม่ต้องการพื้น)
+   --frame-border : สี/ความหนาของเส้นกรอบ */
+.archive-frame {
+  --frame-margin-x: clamp(0px, 3vw, 48px);
+  --frame-margin-top: 24px;
+  --frame-margin-bottom: 56px;
+  --frame-pad-x: clamp(20px, 3.5vw, 56px);
+  --frame-pad-y: clamp(28px, 4vw, 56px);
+  --frame-radius: 4px;
+  --frame-bg: rgba(255, 255, 255, .03);
+  --frame-border: 1px solid var(--line);
+
+  margin: var(--frame-margin-top) var(--frame-margin-x) var(--frame-margin-bottom);
+  padding: var(--frame-pad-y) var(--frame-pad-x);
+  background: var(--frame-bg);
+  border: var(--frame-border);
+  border-radius: var(--frame-radius);
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
-body.thai-films-page {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
-
-.thai-shell {
-    width: 100%;
-    max-width: 1600px;
-    min-height: 100vh;
-    margin: 0 auto;
-    padding: 0 5.5%;
-}
-
-/* เว้นระยะเนื้อหาด้านบนและด้านข้าง */
-.thai-intro {
-    width: 100%;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 100px 0 70px;
-}
-
-/* กริดตัวละคร */
-.character-collection {
-    width: 100%;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.character-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 28px 24px;
-}
-
-.character-card {
-    display: block;
-    min-width: 0;
-}
-
-.character-image {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 3 / 4;
-    overflow: hidden;
-}
-
-.character-image img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* หน้าจอแท็บเล็ต */
-@media (max-width: 900px) {
-    .thai-shell {
-        padding: 0 4%;
-    }
-
-    .character-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 24px 18px;
-    }
-}
-
-/* หน้าจอมือถือ */
-@media (max-width: 550px) {
-    .thai-shell {
-        padding: 0 20px;
-    }
-
-    .thai-intro {
-        padding-top: 65px;
-    }
-
-    .character-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 22px 12px;
-    }
-}
-
-* {
-    box-sizing: border-box;
-}
-
-body.thai-films-page {
-    margin: 0;
-    background: #101514;
-    color: #f7f3ec;
-}
-
-.thai-shell {
-    position: relative;
-    min-height: 100vh;
-    overflow: hidden;
-    isolation: isolate;
-    background: #111716;
-    color: #f7f3ec;
-}
-
-.thai-shell::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-    background: #000000;
-    pointer-events: none;
-}
-
-.thai-shell::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: linear-gradient(180deg, rgba(10, 16, 16, .68), #111716 44%, #111716);
-    pointer-events: none;
-}
-
-.thai-header {
-    position: relative;
-    z-index: 2;
-    color: #f7f3ec;
-    border-bottom: 1px solid rgba(247, 243, 236, .14);
-}
-
-.thai-header .wordmark,
-.thai-header .main-nav a {
-    color: rgba(247, 243, 236, .78);
-}
-
-.thai-header .main-nav a:hover,
-.thai-header .main-nav a.active {
-    color: #f7f3ec;
-}
-
-.thai-intro,
-.character-collection {
-    width: min(1180px, 88%);
-    margin: 0 auto;
-}
-
-.thai-intro {
-    padding: clamp(65px, 9vw, 125px) 0 65px;
-}
-
-.thai-eyebrow,
-.collection-topline,
-.character-meta,
-.card-index,
-.card-open {
-    font-family: "DM Sans", sans-serif;
-    text-transform: uppercase;
-    letter-spacing: .16em;
-    font-size: 10px;
-}
-
-.thai-eyebrow {
-    margin: 0 0 22px;
-    color: #c6d8d4;
-}
-
-.thai-intro h1 {
-    margin: 0;
-    max-width: 900px;
-    font-family: "Caveat", cursive;
-    font-size: clamp(48px, 8vw, 100px);
-    font-weight: 400;
-    line-height: .92;
-    letter-spacing: -.035em;
-}
-
-.thai-intro h1 em {
-    color: #c6d8d4;
-    font-weight: 400;
-}
-
-.thai-intro-copy {
-    margin: 28px 0 24px;
-    color: rgba(247, 243, 236, .76);
-    font: 15px/1.9 "Noto Sans Thai", sans-serif;
-}
-
-.back-link {
-    display: inline-block;
-    color: #c6d8d4;
-    font: 10px "DM Sans", sans-serif;
-    letter-spacing: .14em;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(198, 216, 212, .45);
-    padding-bottom: 7px;
-}
-
-.back-link:hover {
-    opacity: .65;
-}
-
-.character-collection {
-    padding-bottom: 90px;
-}
-
+/* แถบบน ใช้สไตล์เดียวกับ .hero-meta */
 .collection-topline {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    padding: 17px 0;
-    margin-bottom: 25px;
-    color: rgba(247, 243, 236, .55);
-    border-top: 1px solid rgba(247, 243, 236, .22);
-    border-bottom: 1px solid rgba(247, 243, 236, .12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  padding: 0 0 22px;
+  margin-bottom: 32px;
+  font-size: 8px;
+  letter-spacing: .2em;
+  color: var(--muted);
 }
 
 .character-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 42px 22px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 36px 24px;  /* แถว / คอลัมน์ ระหว่างการ์ด */
 }
 
+/* การ์ด ยึดพฤติกรรมเดียวกับ .film-card */
 .character-card {
-    display: block;
-    min-width: 0;
-    color: inherit;
-    text-decoration: none;
+  display: block;
+  min-width: 0;
 }
-
 .character-image {
-    position: relative;
-    overflow: hidden;
-    aspect-ratio: 3 / 4;
-    background: #202725;
-    border: 1px solid rgba(247, 243, 236, .16);
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  margin-bottom: 11px;
+  background: #17201f;
 }
-
 .character-image img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: .86;
-    transition: transform .55s ease, opacity .4s ease;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(.72);
+  transition: filter .3s ease, transform .3s ease;
+}
+.character-card:hover .character-image img {
+  filter: saturate(1);
+  transform: scale(1.03);
 }
 
-.character-image::after {
-    content: "";
-    position: absolute;
-    inset: 35% 0 0;
-    background: linear-gradient(transparent, rgba(8, 13, 13, .78));
-    pointer-events: none;
-}
+/* ปรับตำแหน่งภาพรายใบ (ปรับตัวเลขได้ตามภาพจริง) */
+.nam-image    { object-position: center 20%; }
+.dakanda-image{ object-position: center 20%; }
+.mew-image    { object-position: center 20%; }
+.lanma-image  { object-position: center 25%; }
 
 .card-index {
-    position: absolute;
-    z-index: 1;
-    top: 14px;
-    left: 14px;
-    color: #fff;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 9px;
+  letter-spacing: .13em;
+  color: var(--accent);
 }
-
 .card-open {
-    position: absolute;
-    z-index: 1;
-    right: 14px;
-    bottom: 15px;
-    color: #fff;
-    font-size: 9px;
-    opacity: 0;
-    transform: translateY(5px);
-    transition: opacity .3s ease, transform .3s ease;
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  padding: 7px 10px;
+  font-size: 8px;
+  letter-spacing: .2em;
+  background: rgba(13, 20, 20, .72);
+  border: 1px solid var(--line);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity .3s ease, transform .3s ease;
+}
+.character-card:hover .card-open,
+.character-card:focus-visible .card-open {
+  opacity: 1;
+  transform: none;
 }
 
-.character-card:hover .character-image img {
-    transform: scale(1.045);
-    opacity: 1;
-}
-
-.character-card:hover .card-open {
-    opacity: 1;
-    transform: translateY(0);
-}
-
+/* บรรทัดชื่อหนัง ใช้ฟอนต์/ระยะตัวอักษรเดียวกับ .card-title */
 .character-meta {
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-    margin-top: 15px;
-    color: rgba(198, 216, 212, .7);
-    font-size: 8px;
-    letter-spacing: .1em;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: "Noto Sans Thai", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .12em;
 }
-
-.character-meta span:first-child {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+.character-meta span:last-child {
+  flex-shrink: 0;
+  font-size: 8px;
+  color: var(--accent);
 }
-
 .character-card h2 {
-    margin: 20px 0 7px;
-    font: 400 clamp(25px, 2.5vw, 15px)/1.05 "Noto Sans Thai", sans-serif;
+  margin: 10px 0 0;
+  font-family: "Noto Sans Thai", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.3;
 }
-
-.character-card h2 em {
-    color: #c6d8d4;
-    font-weight: 400;
-}
-
 .character-card p {
-    margin: 0;
-    color: rgba(247, 243, 236, .62);
-    font: 12px/1.8 "Noto Sans Thai", sans-serif;
+  margin: 5px 0 0;
+  font-family: "Noto Sans Thai", sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--muted);
 }
 
-.thai-footer {
-    position: relative;
-    z-index: 1;
-    color: rgba(247, 243, 236, .55);
-    border-top: 1px solid rgba(247, 243, 236, .16);
-}
-
-.thai-footer a {
-    color: #c6d8d4;
-}
-
+/* Tablet */
 @media (max-width: 900px) {
-    .character-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 35px 18px;
-    }
+  .character-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px 12px; }
+  .character-meta { font-size: 8px; letter-spacing: .06em; }
 }
 
-@media (max-width: 600px) {
-
-    .thai-intro,
-    .character-collection {
-        width: 88%;
-    }
-
-    .thai-intro {
-        padding-top: 65px;
-        padding-bottom: 45px;
-    }
-
-    .thai-intro-copy {
-        font-size: 13px;
-    }
-
-    .character-grid {
-        gap: 30px 12px;
-    }
-
-    .character-meta {
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    .character-card p {
-        font-size: 11px;
-    }
-
-    .card-open {
-        opacity: 1;
-        transform: none;
-    }
-}
-
-/* ===== FIX: PAGE WIDTH & SIDE SPACING ===== */
-
-html,
-body {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    overflow-x: hidden;
-}
-
-/* จำกัดความกว้างหน้าให้มีขอบเหมือน Home */
-body.thai-films-page .story-shell,
-body.thai-films-page .thai-films-shell,
-.thai-films-shell {
-    width: 100%;
-    max-width: 1600px;
-    margin: 0 auto;
-    padding-left: 5.5%;
-    padding-right: 5.5%;
-    box-sizing: border-box;
-}
-
-/* จัดระยะส่วนหัว */
-.thai-films-header {
-    padding-left: 5.5%;
-    padding-right: 5.5%;
-    box-sizing: border-box;
-}
-
-/* จัดกริดรูป */
-.thai-films-grid {
-    width: 100%;
-    box-sizing: border-box;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 24px;
-}
-
-.thai-films-grid img {
-    width: 100%;
-    display: block;
-    object-fit: cover;
-}
-
-
-/* หน้าจอแท็บเล็ต */
-@media (max-width: 900px) {
-    .character-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 16px;
-    }
-}
-
-/* หน้าจอมือถือ */
-@media (max-width: 600px) {
-    .thai-shell {
-        padding-left: 6%;
-        padding-right: 6%;
-    }
-
-    .character-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-    }
-}
-
-/* ขยายเฉพาะพื้นหลังภาพปก ไม่ขยับตัวอักษร */
-body.thai-films-page .thai-intro {
-    position: relative;
-    isolation: isolate;
-    background: transparent;
-}
-
-
-body.thai-films-page .thai-intro {
-    position: relative;
-    isolation: isolate;
-    background: transparent;
-}
-
-body.thai-films-page .thai-intro::before {
-    content: "";
-    position: absolute;
-    z-index: 0;
-    top: -110px;
-    bottom: 0;
-    left: 50%;
-    width: 100vw;
-    transform: translateX(-50%);
-    pointer-events: none;
-
-    background-image:
-        linear-gradient(90deg,
-            rgba(7, 12, 11, 1.00) 0%,
-            rgba(7, 12, 11, 0.80) 35%,
-            rgba(7, 12, 11, 0.35) 55%,
-            rgba(7, 12, 11, 0.05) 85%,
-            rgba(7, 12, 11, 0.10) 100%),
-        url("images/thai-cover.jpg ");
-
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-}
-
-body.thai-films-page .thai-intro>* {
-    position: relative;
-    z-index: 1;
-}
-
-body.thai-films-page .thai-header {
-    position: relative;
-    z-index: 2;
-    background: transparent;
-}
-
-
-/* Smooth transition from cover to character collection */
-body.thai-films-page .thai-intro {
-    position: relative;
-    isolation: isolate;
-}
-
-body.thai-films-page .thai-intro::after {
-    content: "";
-    position: absolute;
-    z-index: 1;
-    pointer-events: none;
-
-    left: 50%;
-    bottom: -2px;
-    transform: translateX(-50%);
-
-    width: 100vw;
-    height: 240px;
-
-    background: linear-gradient(to bottom,
-            rgba(12, 19, 17, 0) 0%,
-            rgba(12, 19, 17, 0.25) 5%,
-            rgba(12, 19, 17, 0.65) 40%,
-            rgba(12, 19, 17, 0.95) 80%,
-            #0c1311 100%);
-}
-
-body.thai-films-page .thai-intro>* {
-    position: relative;
-    z-index: 2;
-}
-
-
-/* ปรับตำแหน่งภาพดากานดาเท่านั้น */
-.nam-image {
-    object-fit: cover;
-    object-position: 40% 50%;
-}
-.dakanda-image {
-    object-fit: cover;
-    object-position: 10% 50%;
-}
-.mew-image {
-    object-fit: cover;
-    object-position: 40% 50%;
-}
-.lanma-image {
-    object-fit: cover;
-    object-position: center 100%;
-}
-
-/* เพิ่มระยะห่าง Footer */
-.site-footer {
-  margin-top: 80px;
+/* Mobile */
+@media (max-width: 620px) {
+  .archive-frame {
+    --frame-margin-x: 0px;
+    --frame-margin-bottom: 36px;
+    --frame-pad-x: 16px;
+    --frame-pad-y: 22px;
+  }
+  .hero-image { height: 520px; }
+  .shade { height: 620px; }
+  .page-hero { min-height: 300px; }
+  .character-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 12px; }
+  .character-meta { font-size: 8px; }
+  .character-card h2 { font-size: 17px; }
+  .character-card p { font-size: 13px; }
+  .card-open { opacity: 1; transform: none; }
 }
