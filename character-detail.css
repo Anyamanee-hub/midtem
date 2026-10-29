@@ -1,0 +1,358 @@
+
+:root {
+  --paper: #eee9df;
+  --ink: #f7f3ec;
+  --muted: rgba(247, 243, 236, 0.72);
+  --line: rgba(247, 243, 236, 0.24);
+  --accent: #c6d8d4;
+  --background: #101514;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--ink);
+  font-family: "DM Sans", "Noto Sans Thai", sans-serif;
+}
+
+/* TOP NAVIGATION
+   ใช้โทนเดิมของเว็บไซต์ */
+.site-header {
+  width: 100%;
+  min-height: 76px;
+  padding: 22px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.site-logo {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  font-weight: 500;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.site-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  transition: color 0.25s ease;
+}
+
+.site-nav a:hover {
+  color: var(--accent);
+}
+
+/* MAIN INTRO: ภาพซ้าย เนื้อหาขวา */
+
+.character-detail {
+  width: 90%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 58px 0 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(36px, 6vw, 88px);
+}
+
+.character-main {
+  min-width: 0;
+}
+
+.main-image-wrap {
+  width: 100%;
+  max-width: 490px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #202724;
+}
+
+.main-image-wrap img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.image-caption {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+}
+
+/* RIGHT SIDE TEXT */
+
+.character-content {
+  min-width: 0;
+  padding-top: 8px;
+}
+
+.eyebrow {
+  margin: 0 0 18px;
+  color: var(--accent);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  line-height: 1.8;
+}
+
+.character-content h1 {
+  margin: 0;
+  font-family: "Cormorant Garamond", "Noto Sans Thai", serif;
+  font-size: clamp(40px, 5vw, 68px);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.character-subtitle {
+  margin: 8px 0 24px;
+  color: var(--muted);
+  font-family: "Caveat", cursive;
+  font-size: 25px;
+}
+
+.detail-line {
+  width: 100%;
+  border-top: 1px solid var(--line);
+  margin-bottom: 22px;
+}
+
+.character-meta {
+  margin-bottom: 30px;
+}
+
+.character-meta span {
+  color: var(--accent);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+}
+
+.character-meta p {
+  margin: 8px 0 0;
+  font-family: "Noto Sans Thai", sans-serif;
+  font-size: 13px;
+}
+
+.character-description h2,
+.character-memory h2 {
+  margin: 0 0 12px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+}
+
+.character-description p,
+.character-memory p {
+  margin: 0;
+  color: var(--muted);
+  font-family: "Noto Sans Thai", sans-serif;
+  font-size: 13px;
+  line-height: 2;
+}
+
+.character-quote {
+  margin: 26px 0;
+  padding: 18px 0 18px 18px;
+  border-left: 2px solid var(--accent);
+}
+
+.character-quote p {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Noto Sans Thai", sans-serif;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.character-memory {
+  margin-top: 28px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 32px;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 9px;
+  letter-spacing: 0.13em;
+  transition: color 0.25s ease;
+}
+
+.back-link:hover {
+  color: var(--accent);
+}
+
+/* GALLERY: เต็มความกว้างด้านล่าง */
+
+.gallery-section {
+  width: 90%;
+  max-width: 1320px;
+  margin: 36px auto 90px;
+}
+
+.gallery-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.gallery-heading .eyebrow {
+  margin-bottom: 5px;
+}
+
+.gallery-heading h2 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(27px, 3vw, 38px);
+  font-weight: 400;
+}
+
+.gallery-count {
+  margin: 0 0 5px;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  white-space: nowrap;
+}
+
+.character-thumbnails {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  width: 100%;
+}
+
+.character-thumbnails img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 5 / 3;
+  object-fit: cover;
+  background: #202724;
+  cursor: pointer;
+  transition: opacity 0.25s ease;
+}
+
+.character-thumbnails img:hover {
+  opacity: 0.76;
+}
+
+.character-thumbnails img.image-missing {
+  min-height: 100px;
+  outline: 1px solid var(--line);
+}
+
+/* FOOTER */
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 0 5%;
+  padding: 18px 0 24px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 8px;
+  letter-spacing: 0.17em;
+}
+
+.site-footer a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+/* TABLET */
+
+@media (max-width: 850px) {
+  .character-detail {
+    gap: 32px;
+    padding-top: 40px;
+  }
+
+  .character-thumbnails {
+    gap: 12px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+  .site-header {
+    padding: 18px 5%;
+    flex-wrap: wrap;
+  }
+
+  .site-nav {
+    gap: 14px;
+  }
+
+  .site-nav a {
+    font-size: 8px;
+  }
+
+  .character-detail {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-top: 28px;
+  }
+
+  .main-image-wrap {
+    max-width: 420px;
+  }
+
+  .character-content {
+    padding-top: 0;
+  }
+
+  .character-content h1 {
+    font-size: 48px;
+  }
+
+  .gallery-section {
+    margin-top: 28px;
+    margin-bottom: 60px;
+  }
+
+  .character-thumbnails {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .gallery-heading h2 {
+    font-size: 27px;
+  }
+
+  .gallery-count {
+    font-size: 8px;
+  }
+
+  .site-footer {
+    line-height: 1.8;
+  }
+}

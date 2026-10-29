@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&family=Caveat:wght@400;500&display=swap"
+        rel="stylesheet" <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Charmonman:wght@400;700&family=Noto+Sans+Thai:wght@100..900&family=Pattaya&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="story.css">
+</head>
+
+<body class="story-page">
+    <main class="story-shell">
+        <header class="site-header story-header">
+            <a class="wordmark" href="index.html">CHARACTERS<br>THAT STAY</a>
+            <nav class="main-nav" aria-label="Main navigation"><a href="index.html">HOME</a><a class="active"
+                    href="story.html">STORY</a><a href="index.html#collection">COLLECTION</a><a
+                    href="index.html#about">ABOUT</a></nav>
+            <button class="menu-toggle" aria-label="Open menu" type="button">☰</button>
+        </header>
+        <section class="story-heading" id="story">
+            <h1>Stories That Stay</h1>
+            <p>ตัวละครแต่ละตัวทิ้งความรู้สึกที่แตกต่างกันไว้<br>ลองเลือกคอลเลกชันแล้วค้นหาเรื่องราวที่ตัวละครทิ้งไว้ดู
+            </p>
+        </section>
+        <nav class="category-pills" aria-label="Choose a category">
+            <button class="pill is-active" data-slide="0">Thai films</button><button class="pill"
+                data-slide="1">Foreign Films</button><button class="pill" data-slide="2">Animation</button>
+        </nav>
+        <section class="category-carousel" aria-label="Browse story categories">
+            <button class="carousel-arrow prev" type="button" aria-label="Previous category">←</button>
+            <div class="carousel-viewport">
+                <div class="carousel-track">
+                    
+                    <article class="category-slide" data-index="0">
+                        <a class="slide-image"
+                        href="thaifilm.html">
+                            <img src="images/nam.jpg"alt="The Growing Ones collection"></a>
+                        <div class="slide-copy"><span class="category-number">01 / COLLECTION</span>
+                            <h2>Thai films Characters </h2>
+                            <p>ตัวละครไทยที่สื่อสารเรื่องราวใกล้ตัว</p>
+                        </div>
+                    </article>
+                    <article class="category-slide" data-index="1"><a class="slide-image"
+                            href="index.html#collection"><img src="images/forrest.jpg"
+                                alt="The Misunderstood collection"></a>
+                        <div class="slide-copy"><span class="category-number">02 / COLLECTION</span>
+                            <h2>Foreign Films Characters </h2>
+                            <p>ตัวละครต่างประเทศที่ยิ่งดู ก็ยิ่งรู้สึกชอบ</p>
+                        </div>
+                    </article>
+                    <article class="category-slide" data-index="2"><a class="slide-image"
+                            href="index.html#collection"><img src="images/violet.jpg"
+                                alt="The Ones Who Stay collection"></a>
+                        <div class="slide-copy"><span class="category-number">03 / COLLECTION</span>
+                            <h2> Animation Characters </h2>
+                            <p>อนิเมชั่นที่ตัวละครดีจนลืมไม่ลง</p><span class="category-note"
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+            <button class="carousel-arrow next" type="button" aria-label="Next category">→</button>
+        </section>
+        <div class="carousel-footer"><span class="carousel-count"><b id="current-number">01</b> <span>/ 03</span></span>
+            <div class="carousel-dots" aria-label="Select category"><button class="dot is-active" data-slide="0"
+                    aria-label="Category 1"></button><button class="dot" data-slide="1"
+                    aria-label="Category 2"></button><button class="dot" data-slide="2"
+                    aria-label="Category 3"></button><button class="dot" data-slide="3"
+                    aria-label="Category 4"></button></div><span class="swipe-hint">USE ARROWS TO EXPLORE</span>
+        </div>
+        <footer class="site-footer" id="about"><span>CHARACTERS THAT STAY</span><span>ANYAMANEE POKAMAS &amp;
+                68005463</span><a href="#story">BACK TO TOP ↑</a></footer>
+    </main>
+    <script>
+        const menuButton = document.querySelector('.menu-toggle'); const nav = document.querySelector('.main-nav'); menuButton.addEventListener('click', () => nav.classList.toggle('open'));
+        const track = document.querySelector('.carousel-track'); const slides = [...document.querySelectorAll('.category-slide')]; const pills = [...document.querySelectorAll('.category-pills .pill')]; const dots = [...document.querySelectorAll('.dot')]; let active = 0;
+        function showSlide(index) { active = (index + slides.length) % slides.length; track.style.transform = `translateX(-${active * 100}%)`; slides.forEach((s, i) => s.classList.toggle('is-active', i === active)); pills.forEach((b, i) => b.classList.toggle('is-active', i === active)); dots.forEach((b, i) => b.classList.toggle('is-active', i === active)); document.querySelector('#current-number').textContent = String(active + 1).padStart(2, '0'); }
+        document.querySelector('.carousel-arrow.next').addEventListener('click', () => showSlide(active + 1)); document.querySelector('.carousel-arrow.prev').addEventListener('click', () => showSlide(active - 1)); pills.forEach(b => b.addEventListener('click', () => showSlide(Number(b.dataset.slide)))); dots.forEach(b => b.addEventListener('click', () => showSlide(Number(b.dataset.slide))));
+        let startX = 0; const viewport = document.querySelector('.carousel-viewport'); viewport.addEventListener('touchstart', e => { startX = e.touches[0].clientX }, { passive: true }); viewport.addEventListener('touchend', e => { const delta = e.changedTouches[0].clientX - startX; if (Math.abs(delta) > 45) showSlide(active + (delta < 0 ? 1 : -1)) }, { passive: true }); showSlide(0);
+    </script>
+</body>
+
+</html>
