@@ -1,9 +1,8 @@
 /* thaifilm.css — โหลดต่อจาก style.css (หน้า index)
-   ไฟล์นี้มีเฉพาะส่วนที่หน้า Thai Films ต้องใช้เพิ่ม
-   ส่วนอื่น (header, nav, h1, .intro, .eyebrow, .explore-link, .site-footer ฯลฯ) ใช้จาก style.css */
+   ค่าเส้น/ระยะทั้งหมดในไฟล์นี้ยึดตามค่าใน style.css ของหน้า index
+   (เส้น 1px var(--line), gap 17px, row-gap 22px, ช่องไฟ 11px / 5px, padding 20-28px ฯลฯ) */
 
-/* พื้นหลัง hero + shade: ใน index หน้ามีความสูงเท่าจอเดียว
-   แต่หน้านี้ยาวกว่า จึงล็อกความสูงไว้ไม่ให้ภาพ/ไล่เฉดยืดทั้งหน้า */
+/* พื้นหลัง hero + shade: ล็อกความสูงไว้ ไม่ให้ภาพ/ไล่เฉดยืดตามความยาวหน้า */
 .hero-image {
   inset: 0 0 auto;
   height: 640px;
@@ -14,64 +13,82 @@
 }
 .screen { background: #111716; }
 
-/* ส่วนหัวของหน้า ใช้ .hero-content เหมือน index แต่เตี้ยลง */
+/* ===== เส้น nav แบบหน้า story =====
+   story.css: .story-header { border-bottom: 1px solid rgba(247,243,236,.18) }
+   เส้นยาวเต็มความกว้างจอ ใต้แถบ header
+   หน้านี้ header อยู่ใน .screen ที่มี padding จึงใช้ margin ลบดึงเส้นให้เต็มขอบ
+   แล้วเติม padding กลับเท่าเดิม เนื้อหาใน header จึงไม่ขยับ */
+.screen { --screen-pad: clamp(24px, 5.4vw, 86px); }
+
+.screen > header.site-header {
+  margin: 0 calc(-1 * var(--screen-pad));
+  padding: 0 var(--screen-pad);
+  border-bottom: 1px solid rgba(247, 243, 236, 0.18);
+}
+
+@media (max-width: 900px) {
+  .screen { --screen-pad: 28px; }
+}
+@media (max-width: 620px) {
+  .screen { --screen-pad: 20px; }
+  .screen > header.site-header .main-nav { right: var(--screen-pad); }
+}
+
+/* ===== ส่วนหัวหน้า (ใช้ .hero-content ของ index) ===== */
 .page-hero {
   min-height: 340px;
+  max-width: none;          /* ให้ "Thai Films Characters" อยู่บรรทัดเดียวกัน */
   padding-bottom: 28px;
-  max-width: 720px;
+}
+.page-hero h1 {
+  font-size: clamp(56px, 7vw, 104px);
+}
+.page-hero h1 span {
+  margin-left: .12em;       /* เว้นแค่ช่องไฟระหว่างคำ ไม่ขึ้นบรรทัดใหม่ */
 }
 .page-hero .intro { max-width: 560px; }
-
-/* ปุ่มกลับ ใช้ .explore-link ของ index */
 .page-hero .explore-link { width: fit-content; }
 
-/* ===== Character collection ===== */
-.character-collection { padding: 0 0 8px; }
+/* ===== กรอบ PERSONAL ARCHIVE =====
+   ปรับระยะได้ที่ตัวแปรชุดนี้ (ค่าเริ่มต้นอ้างอิงจาก index)
+   --frame-margin-top / bottom : ระยะกรอบจากส่วนบน (intro) / ล่าง (footer)
+   --frame-pad-x / --frame-pad-y : ระยะจากเส้นกรอบถึงเนื้อหา ซ้าย-ขวา / บน-ล่าง
+   --frame-border : เส้นกรอบ (เหมือนเส้นของ .hero-meta / .site-footer ใน index) */
+.character-collection { padding: 0; }
 
-/* ===== กรอบ PERSONAL ARCHIVE — ปรับระยะได้ที่ตัวแปรชุดนี้ =====
-   --frame-margin-x : ระยะห่างกรอบจากขอบซ้าย/ขวาของหน้า
-   --frame-margin-top / bottom : ระยะห่างกรอบจากส่วนบน (intro) และส่วนล่าง (footer)
-   --frame-pad-x / --frame-pad-y : ระยะห่างจากเส้นกรอบเข้าไปถึงเนื้อหาข้างใน
-   --frame-radius : ความโค้งของมุม (0 = มุมเหลี่ยม)
-   --frame-bg : สีพื้นในกรอบ (ใส่ transparent ถ้าไม่ต้องการพื้น)
-   --frame-border : สี/ความหนาของเส้นกรอบ */
 .archive-frame {
-  --frame-margin-x: clamp(0px, 3vw, 48px);
-  --frame-margin-top: 24px;
-  --frame-margin-bottom: 56px;
-  --frame-pad-x: clamp(20px, 3.5vw, 56px);
-  --frame-pad-y: clamp(28px, 4vw, 56px);
-  --frame-radius: 4px;
-  --frame-bg: rgba(255, 255, 255, .03);
+  --frame-margin-top: 23px;      /* = .film-strip padding-top */
+  --frame-margin-bottom: 28px;   /* = .film-strip padding-bottom */
+  --frame-pad-x: 28px;           /* = padding ซ้าย/ขวาของ .screen ที่ tablet */
+  --frame-pad-y: 28px;
   --frame-border: 1px solid var(--line);
 
-  margin: var(--frame-margin-top) var(--frame-margin-x) var(--frame-margin-bottom);
+  margin: var(--frame-margin-top) 0 var(--frame-margin-bottom);
   padding: var(--frame-pad-y) var(--frame-pad-x);
-  background: var(--frame-bg);
   border: var(--frame-border);
-  border-radius: var(--frame-radius);
 }
 
-/* แถบบน ใช้สไตล์เดียวกับ .hero-meta */
+/* แถบบน = สไตล์เดียวกับ .hero-meta */
 .collection-topline {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--line);
-  padding: 0 0 22px;
-  margin-bottom: 32px;
+  padding: 0 0 24px;
+  margin-bottom: 23px;           /* = .film-strip padding-top */
   font-size: 8px;
   letter-spacing: .2em;
   color: var(--muted);
 }
 
+/* กริด = .cards ของ index (gap 17px, มือถือ row-gap 22px) */
 .character-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 36px 24px;  /* แถว / คอลัมน์ ระหว่างการ์ด */
+  gap: 22px 17px;
 }
 
-/* การ์ด ยึดพฤติกรรมเดียวกับ .film-card */
+/* การ์ด = .film-card ของ index */
 .character-card {
   display: block;
   min-width: 0;
@@ -80,7 +97,7 @@
   position: relative;
   overflow: hidden;
   aspect-ratio: 4 / 5;
-  margin-bottom: 11px;
+  margin-bottom: 11px;           /* = .card-image margin-bottom */
   background: #17201f;
 }
 .character-image img {
@@ -93,47 +110,43 @@
 }
 .character-card:hover .character-image img {
   filter: saturate(1);
-  transform: scale(1.03);
+  transform: translateY(-3px);   /* = hover ของ .card-image */
 }
 
-/* ปรับตำแหน่งภาพรายใบ (ปรับตัวเลขได้ตามภาพจริง) */
-.nam-image    { object-position: center 20%; }
-.dakanda-image{ object-position: center 20%; }
-.mew-image    { object-position: center 20%; }
-.lanma-image  { object-position: center 25%; }
+/* ปรับตำแหน่งภาพรายใบ */
+.nam-image     { object-position: center 20%; }
+.dakanda-image { object-position: center 20%; }
+.mew-image     { object-position: center 20%; }
+.lanma-image   { object-position: center 25%; }
 
 .card-index {
   position: absolute;
-  top: 12px;
-  left: 12px;
+  top: 11px;
+  left: 11px;
   font-size: 9px;
   letter-spacing: .13em;
   color: var(--accent);
 }
 .card-open {
   position: absolute;
-  right: 12px;
-  bottom: 12px;
+  right: 11px;
+  bottom: 11px;
   padding: 7px 10px;
   font-size: 8px;
   letter-spacing: .2em;
   background: rgba(13, 20, 20, .72);
   border: 1px solid var(--line);
   opacity: 0;
-  transform: translateY(4px);
-  transition: opacity .3s ease, transform .3s ease;
+  transition: opacity .3s ease;
 }
 .character-card:hover .card-open,
-.character-card:focus-visible .card-open {
-  opacity: 1;
-  transform: none;
-}
+.character-card:focus-visible .card-open { opacity: 1; }
 
-/* บรรทัดชื่อหนัง ใช้ฟอนต์/ระยะตัวอักษรเดียวกับ .card-title */
+/* ชื่อหนัง = .card-title ของ index */
 .character-meta {
   display: flex;
   justify-content: space-between;
-  gap: 8px;
+  gap: 8px;                      /* = .film-card column-gap */
   font-family: "Noto Sans Thai", sans-serif;
   font-size: 10px;
   font-weight: 500;
@@ -141,44 +154,46 @@
 }
 .character-meta span:last-child {
   flex-shrink: 0;
-  font-size: 8px;
+  font-size: 9px;
   color: var(--accent);
 }
 .character-card h2 {
-  margin: 10px 0 0;
+  margin: 5px 0 0;               /* = .card-subtitle margin-top */
   font-family: "Noto Sans Thai", sans-serif;
   font-size: 20px;
   font-weight: 500;
   line-height: 1.3;
 }
 .character-card p {
-  margin: 5px 0 0;
+  margin: 5px 0 0;               /* = .card-subtitle margin-top */
   font-family: "Noto Sans Thai", sans-serif;
-  font-size: 14px;
+  font-size: 14px;               /* = .card-subtitle */
   line-height: 1.55;
   color: var(--muted);
 }
 
-/* Tablet */
+/* Tablet (breakpoint เดียวกับ index) */
 @media (max-width: 900px) {
-  .character-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px 12px; }
+  .character-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; row-gap: 22px; }
   .character-meta { font-size: 8px; letter-spacing: .06em; }
 }
 
-/* Mobile */
+/* Mobile (breakpoint เดียวกับ index) */
 @media (max-width: 620px) {
-  .archive-frame {
-    --frame-margin-x: 0px;
-    --frame-margin-bottom: 36px;
-    --frame-pad-x: 16px;
-    --frame-pad-y: 22px;
-  }
   .hero-image { height: 520px; }
   .shade { height: 620px; }
   .page-hero { min-height: 300px; }
-  .character-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 12px; }
+  .page-hero h1 { font-size: clamp(40px, 12vw, 64px); }
+  .archive-frame {
+    --frame-margin-top: 20px;
+    --frame-margin-bottom: 22px;
+    --frame-pad-x: 20px;         /* = padding ของ .screen บนมือถือ */
+    --frame-pad-y: 20px;
+  }
+  .collection-topline { font-size: 7px; }
+  .character-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .character-meta { font-size: 8px; }
   .character-card h2 { font-size: 17px; }
   .character-card p { font-size: 13px; }
-  .card-open { opacity: 1; transform: none; }
+  .card-open { opacity: 1; }
 }
