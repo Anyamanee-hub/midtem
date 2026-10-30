@@ -2,124 +2,65 @@
 <html lang="th">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thai Films | Characters That Stay</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&family=Caveat:wght@400;500&family=Noto+Sans+Thai:wght@100..900&display=swap"
-        rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&family=Noto+Sans+Thai:wght@300;400;500;600&display=swap">
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="thaifilm.css">
-
+    <!-- base.css = ส่วนกลางทุกหน้า / pages/*.css = เฉพาะหน้านี้ -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/pages/collection.css">
 </head>
 
-<body>
-    <main class="screen">
-              <div class="hero-image"></div>
-      <div class="shade"></div>
-        <header class="site-header">
+<body id="top" class="page-collection" data-nav="collection" data-category="thai">
+    <div class="page-bg" aria-hidden="true"></div>
+
+    <!-- ===== HEADER (เหมือนกันทุกหน้า — เมนูที่ active มาจาก data-nav ของ body) ===== -->
+    <header class="site-header">
+        <div class="site-header__inner container">
             <a class="wordmark" href="index.html">CHARACTERS<br>THAT STAY</a>
             <nav class="main-nav" aria-label="Main navigation">
-                <a href="index.html">HOME</a>
-                <a class="active" href="story.html">STORY</a>
-                <a href="index.html#collection">COLLECTION</a>
-                <a href="index.html#about">ABOUT</a>
+                <a href="index.html" data-nav="home">HOME</a>
+                <a href="story.html" data-nav="story">STORY</a>
+                <a href="collang.html" data-nav="collection">COLLECTION</a>
+                <a href="#about">ABOUT</a>
             </nav>
-            <button class="menu-toggle" type="button" aria-label="Open menu">☰</button>
-        </header>
+            <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+        </div>
+    </header>
 
-        <section class="hero-content page-hero">
-            <p class="eyebrow">COLLECTION / THAI FILMS</p>
-            <h1>Thai Films <span>Characters</span></h1>
-            <p class="intro">ตัวละครไทยที่ทิ้งบางความรู้สึกไว้กับเรา บางตัวละครมักเจอเรื่องราว<br class="desktop-break" />
-                หรือเกิดความรู้สึกที่เป็นเรื่องใกล้ตัว ให้ความรู้สึกเหมือนเกิดขึ้นกับตัวเองจริงๆ</p>
-            <a class="explore-link" href="story.html">← BACK TO STORY</a>
+    <main class="container">
+        <!-- ข้อความส่วนนี้เติมจาก COLLECTIONS ใน js/characters.js -->
+        <section class="collection-hero">
+            <p class="eyebrow" data-hero-eyebrow></p>
+            <h1 class="display-title display-title--inline" data-hero-title></h1>
+            <p class="lead" data-hero-intro></p>
+            <a class="text-link" href="story.html">← BACK TO STORY</a>
         </section>
 
-        <section class="character-collection">
-            <div class="archive-frame">
-            <div class="collection-topline"><span>PERSONAL ARCHIVE</span><span>08 CHARACTERS</span></div>
-            <div class="character-grid">
-                <a class="character-card" href="character-detail.html?id=nam">
-                    <div class="character-image"><img src="images/nam.jpg" class="nam-image"><span
-                            class="card-index">01</span><span class="card-open">VIEW STORY ↗</span></div>
-                    <div class="character-meta"><span>สิ่งเล็ก ๆ ที่เรียกว่ารัก</span><span>THAI FILM</span></div>
-                    <h2>น้ำ</h2>
-                    <p>การเติบโต ความรัก ความกล้าที่จะเปลี่ยนแปลงตัวเอง</p>
-                </a>
-                <a class="character-card" href="character-detail.html?id=dakanda">
-                    <div class="character-image"><img src="images/dakanda.jpg" class="dakanda-image">
-                        <span class="card-index">02</span><span class="card-open">VIEW STORY ↗</span>
-                    </div>
-                    <div class="character-meta"><span>เพื่อนสนิท</span><span>THAI FILM</span></div>
-                    <h2>ดากานดา</h2>
-                    <p>ความสัมพันธ์ที่เต็มไปด้วยความรู้สึกที่ไม่ได้พูดออกมา</p>
-                </a>
-                <a class="character-card" href="character-detail.html?id=mew">
-                    <div class="character-image"><img src="images/mew.jpg" class="mew-image">
-                        <span class="card-index">03</span><span class="card-open">VIEW STORY ↗</span>
-                    </div>
-                    <div class="character-meta"><span>รักแห่งสยาม</span><span>THAI FILM</span></div>
-                    <h2> มิว </h2>
-                    <p>เผชิญกับความรัก ความสูญเสีย และการยอมรับตัวเอง</p>
-                </a>
-                <a class="character-card" href="character-detail.html?id=kao">
-                    <div class="character-image"><img src="images/kao.jpg"><span class="card-index">04</span><span
-                            class="card-open">VIEW STORY ↗</span></div>
-                    <div class="character-meta"><span>Fast & Feel Love</span><span>THAI FILM</span></div>
-                    <h2>เกา</h2>
-                    <p>เรียนรู้การใช้ชีวิตและดูแลความสัมพันธ์นอกเหนือจากสิ่งที่ตัวเองถนัด</p>
-                </a>
-                <a class="character-card" href="character-detail.html?id=song">
-                    <div class="character-image"><img src="images/song.png"><span class="card-index">05</span><span
-                            class="card-open">VIEW STORY ↗</span></div>
-                    <div class="character-meta"><span>คิดถึงวิทยา</span><span>THAI FILM</span></div>
-                    <h2>ครูสอง</h2>
-                    <p>ความโดดเดี่ยว ความหวัง และสายสัมพันธ์ที่เกิดขึ้นผ่านเรื่องราวของใครอีกคน</p>
-                </a>
-                <a class="character-card" href="character-detail.html?id=lanma">
-                    <div class="character-image"><img src="images/lanma.jpg" class="lanma-image"><span
-                            class="card-index">06</span><span class="card-open">VIEW STORY ↗</span></div>
-                    <div class="character-meta"><span>หลานม่า</span><span>THAI FILM</span></div>
-                    <h2>กู๋โส่ย</h2>
-                    <p>เป็นตัวละครที่สะท้อนข้อบกพร่องและความซับซ้อนของคนในครอบครัว</p>
-                </a>
-                <a class="character-card" href="character-detail.html?id=yun">
-                    <div class="character-image"><img src="images/yun.jpg"><span class="card-index">07</span><span
-                            class="card-open">VIEW STORY ↗</span></div>
-                    <div class="character-meta"><span>ฟรีแลนซ์..ห้ามป่วย ห้ามพัก ห้ามรักหมอ</span><span>THAI FILM</span>
-                    </div>
-                    <h2>ยุ่น</h2>
-                    <p>เป็นหนังเรื่องแรกที่รู้จักอาชีพกราฟิก</p>
-                </a>
-                <a class="character-card" href="character-detail.html?id=mo">
-                    <div class="character-image"><img src="images/mo.jpg"><span class="card-index">08</span><span
-                            class="card-open">VIEW STORY ↗</span></div>
-                    <div class="character-meta"><span>วิมานหนาม</span><span>THAI FILM</span></div>
-                    <h2>โหม๋</h2>
-                    <p>เส้นแบ่งระหว่างความถูกต้องกับความต้องการ</p>
-                </a>
+        <section class="archive">
+            <div class="section-bar">
+                <span>PERSONAL ARCHIVE</span>
+                <span data-count></span>
             </div>
-            </div>
-
-            <footer class="site-footer" id="about"><span>CHARACTERS THAT STAY</span><span>ANYAMANEE POKAMAS &amp;
-                    68005463</span><a href="thaifilm.html">BACK TO TOP ↑</a></footer>
-
+            <!-- การ์ดถูกสร้างจาก js/characters.js — เพิ่ม/แก้ตัวละครที่ไฟล์นั้น -->
+            <div class="character-grid" data-character-grid></div>
         </section>
-        <script>
-            const menuButton = document.querySelector('.menu-toggle');
-            const nav = document.querySelector('.main-nav');
-
-            if (menuButton && nav) {
-                menuButton.addEventListener('click', () => {
-                    nav.classList.toggle('open');
-                });
-            }
-        </script>
     </main>
+
+    <!-- ===== FOOTER (เหมือนกันทุกหน้า) ===== -->
+    <footer class="site-footer" id="about">
+        <span>CHARACTERS THAT STAY</span>
+        <span>ANYAMANEE POKAMAS &amp; 68005463</span>
+        <a href="#top">BACK TO TOP ↑</a>
+    </footer>
+
+    <script src="js/characters.js"></script>
+    <script src="js/collection.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

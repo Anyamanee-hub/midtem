@@ -1,348 +1,98 @@
-
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Character Detail | Characters That Stay</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character | Characters That Stay</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500;600&family=Caveat:wght@400;500&family=Noto+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&family=Noto+Sans+Thai:wght@300;400;500;600&display=swap">
 
-  <link rel="stylesheet" href="character-detail.css">
+    <!-- base.css = ส่วนกลางทุกหน้า / pages/*.css = เฉพาะหน้านี้ -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/pages/detail.css">
 </head>
 
-<body>
+<body id="top" class="page-detail" data-nav="collection">
+    <div class="page-bg" aria-hidden="true"></div>
 
-  <!-- TOP NAVIGATION -->
-  <!-- หากหน้าอื่นมีเมนูเดิมอยู่แล้ว ให้นำส่วน header เดิมมาแทนส่วนนี้ -->
-  <header class="site-header">
-    <a class="site-logo" href="index.html">
-      CHARACTERS THAT STAY
-    </a>
-
-    <nav class="site-nav">
-      <a href="index.html">HOME</a>
-      <a href="story.html">STORIES</a>
-      <a href="thaifilm.html">COLLECTION</a>
-    </nav>
-  </header>
-
-  <main>
-    <!-- CHARACTER INTRO: รูปซ้าย ข้อความขวา -->
-    <section class="character-detail">
-
-      <div class="character-main">
-        <div class="main-image-wrap">
-          <img id="mainImage" src="images/dakanda.jpg" alt="Character portrait">
+    <!-- ===== HEADER (เหมือนกันทุกหน้า — เมนูที่ active มาจาก data-nav ของ body) ===== -->
+    <header class="site-header">
+        <div class="site-header__inner container">
+            <a class="wordmark" href="index.html">CHARACTERS<br>THAT STAY</a>
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="index.html" data-nav="home">HOME</a>
+                <a href="story.html" data-nav="story">STORY</a>
+                <a href="collang.html" data-nav="collection">COLLECTION</a>
+                <a href="#about">ABOUT</a>
+            </nav>
+            <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
         </div>
-        <p class="image-caption" id="imageCaption">
-          A MOMENT THAT STAYS
-        </p>
-      </div>
+    </header>
 
-      <div class="character-content">
-        <p class="eyebrow" id="characterCategory">
-          THAI FILM / CHARACTER
-        </p>
+    <main class="container">
+        <section class="detail">
+            <div class="detail__media" id="detailMedia">
+                <div class="detail__image">
+                    <img id="detailImage" src="" alt="">
+                </div>
+                <p class="detail__caption">A MOMENT THAT STAYS</p>
+            </div>
 
-        <h1 id="characterName">ดากานดา</h1>
+            <div class="detail__content">
+                <p class="eyebrow" id="detailCategory"></p>
+                <h1 class="detail__name" id="detailName"></h1>
+                <p class="detail__subtitle" id="detailSubtitle"></p>
 
-        <p class="character-subtitle" id="characterSubtitle">
-          Dakanda
-        </p>
+                <div class="detail__rule"></div>
 
-        <div class="detail-line"></div>
+                <div class="detail__film" id="detailFilm">
+                    <p class="detail__label">FILM</p>
+                    <p id="detailFilmName"></p>
+                </div>
 
-        <div class="character-meta">
-          <span>FILM</span>
-          <p id="filmName">เพื่อนสนิท</p>
-        </div>
+                <div id="detailStory">
+                    <h2 class="detail__label">THE STORY</h2>
+                    <p class="detail__text" id="detailDescription"></p>
+                </div>
 
-        <div class="character-description">
-          <h2>THE STORY</h2>
-          <p id="characterDescription"></p>
-        </div>
+                <blockquote class="detail__quote" id="detailQuote">
+                    <span id="detailQuoteText"></span>
+                </blockquote>
 
-        <div class="character-quote">
-          <p id="characterQuote"></p>
-        </div>
+                <div class="detail__memory" id="detailMemory">
+                    <h2 class="detail__label">WHY THEY STAY</h2>
+                    <p class="detail__text" id="detailMemoryText"></p>
+                </div>
 
-        <div class="character-memory">
-          <h2>WHY THEY STAY</h2>
-          <p id="characterMemory"></p>
-        </div>
+                <a class="text-link" id="detailBack" href="collang.html">← BACK TO COLLECTION</a>
+            </div>
+        </section>
 
-        <a class="back-link" href="thaifilm.html">
-          ← BACK TO COLLECTION
-        </a>
-      </div> 
+        <section class="detail-gallery" id="detailGalleryWrap">
+            <div class="detail-gallery__head">
+                <div>
+                    <p class="eyebrow">SELECTED MOMENTS</p>
+                    <h2>Fragments of a Story</h2>
+                </div>
+                <p class="detail-gallery__count" id="detailGalleryCount"></p>
+            </div>
+            <div class="detail-gallery__grid" id="detailGallery"><!-- JS ใส่รูปให้ --></div>
+        </section>
+    </main>
 
-    </section> 
+    <!-- ===== FOOTER (เหมือนกันทุกหน้า) ===== -->
+    <footer class="site-footer" id="about">
+        <span>CHARACTERS THAT STAY</span>
+        <span>ANYAMANEE POKAMAS &amp; 68005463</span>
+        <a href="#top">BACK TO TOP ↑</a>
+    </footer>
 
-    <!-- GALLERY: แยกออกจากสองคอลัมน์และกินเต็มความกว้าง -->
-    <section class="gallery-section">
-      <div class="gallery-heading">
-        <div>
-          <p class="eyebrow">SELECTED MOMENTS</p>
-          <h2>Fragments of a Story</h2>
-        </div>
-        <p class="gallery-count">06 / MOMENTS</p>
-      </div>
-
-      <div class="character-thumbnails" id="characterGallery">
-        <!-- JavaScript จะใส่รูป 6 ภาพตรงนี้ -->
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <span>CHARACTERS THAT STAY</span>
-    <span>MADE OF STORIES &amp; FEELINGS</span>
-    <a href="#">BACK TO TOP ↑</a>
-  </footer>
-
-  <script>
-    /*
-      เพิ่มหรือแก้ข้อมูลตัวละครได้ในส่วนนี้
-      ชื่อไฟล์ภาพต้องตรงกับไฟล์ที่อยู่ในโฟลเดอร์ images
-    */
-
-    const characters = {
-      nam: {
-        name: "น้ำ",
-        film: "สิ่งเล็ก ๆ ที่เรียกว่ารัก",
-        category: "THAI FILM / FIRST LOVE",
-        image: "images/nam.jpg",
-        description:
-          "เรื่องราวของเด็กสาวคนหนึ่งที่ค่อย ๆ เติบโต เรียนรู้เกี่ยวกับความรัก และค้นพบความมั่นใจในตัวเอง",
-        quote:
-          "บางครั้ง ความรู้สึกเล็ก ๆ ก็กลายเป็นความทรงจำที่ยิ่งใหญ่",
-        memory:
-          "น้ำทำให้เรานึกถึงช่วงเวลาที่เคยแอบชอบใครสักคน ความกล้าที่ค่อย ๆ เติบโต และความทรงจำของวัยเรียนที่ยังทำให้เรายิ้มได้",
-        gallery: [
-          "images/nam-1.jpg",
-          "images/nam-2.jpg",
-          "images/nam-3.jpg",
-          "images/nam-4.jpg",
-          "images/nam-5.jpg",
-          "images/nam-6.jpg"
-        ]
-      },
-
-      dakanda: {
-        name: "ดากานดา",
-        film: "เพื่อนสนิท",
-        category: "THAI FILM / OLD MEMORIES",
-        image: "images/dakanda.jpg",
-        description:
-          "ดากานดาคือส่วนหนึ่งของเรื่องราวความสัมพันธ์ที่ค่อย ๆ ก่อตัวขึ้นจากความใกล้ชิด ความคุ้นเคย และความรู้สึกที่อาจไม่ได้ถูกพูดออกมาตรง ๆ",
-        quote:
-          "บางความรู้สึก อาจยังอยู่ในความทรงจำ แม้เวลาจะผ่านไป",
-        memory:
-          "เรื่องราวของดากานดาชวนให้นึกถึงความสัมพันธ์ในช่วงหนึ่งของชีวิต คนที่เคยใกล้ชิด และช่วงเวลาที่มีความหมาย แม้สุดท้ายทุกอย่างอาจไม่ได้เป็นอย่างที่หวัง",
-        gallery: [
-          "images/dakanda-1.jpg",
-          "images/dakanda-2.jpg",
-          "images/dakanda-3.jpg",
-          "images/dakanda-4.jpg",
-          "images/dakanda-5.jpg",
-          "images/dakanda-6.jpg"
-        ]
-      },
-
-       mew: {
-        name: "มิว",
-        film: "รักกแห่งสยาม",
-        category: "THAI FILM / OLD MEMORIES",
-        image: "images/mew.jpg",
-        description:
-          "มิวเป็นเด็กหนุ่มที่ถ่ายทอดความรู้สึกผ่านเสียงดนตรี ท่ามกลางความโดดเดี่ยวและความเปลี่ยนแปลงในชีวิต การกลับมาพบกับโต้งทำให้ความทรงจำและความรู้สึกที่เก็บไว้มานานค่อย ๆ กลับมามีความหมายอีกครั้ง",
-        quote:
-          "ไม่ใช่ทุกความรักที่จะได้อยู่ด้วยกัน แต่ไม่ได้แปลว่ามันไม่มีความหมาย",
-        memory:
-          "มิวเป็นตัวแทนของความรู้สึกที่บางครั้งเราไม่สามารถอธิบายเป็นคำพูดได้ เรื่องราวของเขาทำให้เห็นว่าความรักไม่ได้จบลงด้วยการได้ครอบครองเสมอไป แต่อาจยังคงอยู่ในความทรงจำและสิ่งที่เราเลือกเก็บไว้ และตัวละครมิวยังถ่ายทอดความรู้สึกของคำว่ารักที่หนักแน่นมาก รักที่ไม่ได้จำกัดแค่เพศชายและหญิงเท่านั้น ในตอนนั้นถือว่าน่าจดจำสำหรับเรามากเพราะมันทำให้รู้ว่าความรักมันมีหลายรูปแบบมากกว่าที่เห็น",
-        gallery: [
-          "images/dakanda-1.jpg",
-          "images/dakanda-2.jpg",
-          "images/dakanda-3.jpg",
-          "images/dakanda-4.jpg",
-          "images/dakanda-5.jpg",
-          "images/dakanda-6.jpg"
-        ]
-      },
-
-      kao: {
-        name: "เกา",
-        film: "Fast & Feel Love",
-        category: "THAI FILM / OLD MEMORIES",
-        image: "images/kao.jpg",
-        description:
-          "เกาเป็นนักกีฬา Sport Stacking ที่ทุ่มเทให้กับการเป็นที่หนึ่งจนเคยชินกับการใช้ชีวิตอย่างมีเป้าหมายชัดเจน แต่เมื่อชีวิตไม่ได้ดำเนินไปตามแผน เขากลับต้องเผชิญกับสิ่งที่ไม่สามารถแก้ไขได้ด้วยความเร็วหรือทักษะเพียงอย่างเดียว",
-        quote:
-          "ชีวิตไม่ได้มีเส้นชัยเดียว และเราไม่จำเป็นต้องชนะทุกครั้ง",
-        memory:
-          'เกาเป็นตัวละครที่มีมิติมากแต่ไม่ได้ซับซ้อนอะไร เกาสะท้อนภาพลักษณ์ของคนเก่งได้ดี'+
-          'เก่งในสิ่งที่ตัวเองชอบ มุ่งมั่นและพยายาม เป็นตัวละครที่เห็นแก่ตัวมากในเชิงความรู้สึกคนดู แต่เรากลับไม่รู้สึกเกลียดตัวละครนี้เลย กลับชอบด้วยซ้ำ เพราะเข้าใจว่าเค้าคือตัวละครที่มีพื้นฐานความเป็นคนสูงมาก '+
-          'คือการเลือกตัวเองก่อน ถ้าเราได้ดี เดี๋ยวอย่างอื่น คนอื่นก็จะดีด้วยเอง เค้าเลยต้องทุ่มเทแลกทุกอย่างกับมัน ทั้งชีวิต และความสัมพันธ์ เกาทำให้เราตั้งคำถามว่าการประสบความสำเร็จนั้นมันดีพอแล้วรึยังกับสิ่งที่แลกมา กับการที่เราไม่เหลือคนข้าง ๆ แล้วมันจะดีกว่ามั้ยถ้าเราทั้งรักตัวเองและรักคนข้างๆไปด้วยกัน แต่ในทางกับกัน การโตขึ้นของตัวละครเกา ก็ทำให้้เราเข้าใจว่า ชีวิตความเป็นจริงไม่ไหวก็อย่าฝืน ไม่จำเป็นต้องแฮปปี้เอนดิ้งเสมอไปกับความสัมพันธ์',
-        gallery: [
-          "images/dakanda-1.jpg",
-          "images/dakanda-2.jpg",
-          "images/dakanda-3.jpg",
-          "images/dakanda-4.jpg",
-          "images/dakanda-5.jpg",
-          "images/dakanda-6.jpg"
-        ]
-      },
-
-      song: {
-        name: "ครูสอง",
-        film: "คิดถึงวิทยา",
-        category: "THAI FILM / OLD MEMORIES",
-        image: "images/song.png",
-        description:
-          "สองเป็นครูหนุ่มที่เดินทางไปสอนในโรงเรียนเรือนแพห่างไกลจากผู้คน ที่นั่นเขาได้พบกับบันทึกของครูแอน ผู้เคยทำหน้าที่ในสถานที่เดียวกัน เรื่องราวในสมุดบันทึกค่อย ๆ เชื่อมโยงคนสองคนที่ไม่เคยอยู่ในช่วงเวลาเดียวกันเข้าด้วยกัน",
-        quote:
-          "บางคนเข้ามาในชีวิต ผ่านเรื่องราวที่เขาทิ้งไว้",
-        memory:
-          "สองทำให้เห็นว่าคนคนหนึ่งสามารถสร้างความหมายให้ชีวิตของอีกคนได้ แม้จะไม่เคยพบหน้ากันโดยตรง บางครั้งสิ่งที่เราทิ้งไว้ ไม่ว่าจะเป็นคำพูดหรือเรื่องราว ก็สามารถกลายเป็นความผูกพันที่ยาวนานกว่าที่คิด การตกหลุมรัก หรือ การเกิดความรู้สึกต่างๆขึ้น บางทีมันก็ไม่ได้มีเหตุผลอะไรนักแน่นหรือตายตัว บางทีมันเป็นแค่การที่เรา พบเจอ และจดจำเค้าได้อยู่ตลอด ไม่ว่าจะจากคำพูด วิธีคิด หรือ การแสดงออกของเค้า จนเกิดเป็นความรู้สึก นั่นคือสิ่งที่เราค้นพบเมื่อได้รู้จักกับตัวละครครูสอง และชอบบรรยากาศ การแสดงออก ของคิดถึงวิทยามาก มันทำให้เราคอยลุ้นเป็นกำลังใจในทุกการกระทำของตัวละคร ว่าสุดท้ายแล้วสิ่งที่ผ่านมาแล้วได้พบเจอ มันจะเป็นเรื่องราวที่ดี หรือ สุดท้ายแล้วมันจะเหลือเพียงแค่เรื่องราวที่เคยผ่านมา ",
-        gallery: [
-          "images/dakanda-1.jpg",
-          "images/dakanda-2.jpg",
-          "images/dakanda-3.jpg",
-          "images/dakanda-4.jpg",
-          "images/dakanda-5.jpg",
-          "images/dakanda-6.jpg"
-        ]
-      },
-
-      lanma: {
-        name: "กู๋โส่ย",
-        film: "หลานม่า",
-        category: "THAI FILM / OLD MEMORIES",
-        image: "images/lanma.jpg",
-        description:
-          "กู๋โส่ยเป็นหนึ่งในสมาชิกครอบครัวที่มีปัญหาและความกดดันในชีวิตของตัวเอง เขาอาจดูเป็นคนที่ไม่ค่อยเอาไหนในสายตาคนรอบข้าง แต่เบื้องหลังพฤติกรรมและการตัดสินใจของเขาก็สะท้อนความสัมพันธ์ ความคาดหวัง และผลประโยชน์ที่ซับซ้อนภายในครอบครัว",
-        quote:
-          "ครอบครัวไม่ได้มีแต่คนที่เราเข้าใจ แต่ยังมีคนที่เราต้อง..พยายามเพื่อเข้าใจ",
-        memory:
-          "กู๋โส่ยชวนให้เรามองคนในครอบครัวให้มากกว่าบทบาทที่พวกเขาได้รับ เขาไม่ใช่ตัวอย่างของคนที่สมบูรณ์แบบ ลูกคนเล็กของบ้านคนจีน เป็นภาพสะท้อนว่าความรัก ความเห็นแก่ตัว และความรู้สึกผิด ความอาย  หลากหลายมากในนิยามคนดู กู๋โส่ยคือคนไม่ประสบความสำเร็จด้านการใช้ชีวิต แต่ประสบความสำเร็จในทางความรู้สึก เค้าเป็นตัวละครที่แบกรับความโหลยโท่ยของตัวเอง แต่กลับมีความสุขมากที่สุด เพราะไม่ต้องแบกรับความคาดหวังของครอบครัวยังยิ้มหัวเราะเป็นตัวเองได้  แต่ในทางกับกันกู๋โส่ยก็เป็นตัวละครที่น่าเห็นใจ การที่โตมากับการโดนเปรียบเทียบกับคนพี่ที่เก่งมากๆ ไม่ใช่ว่าตัวละครกู๋โส่ยไม่พยายามจะประสบความสำเร็จ แต่มันทำได้เต็มที่ที่สุดในแบบของตัวเองแล้วแต่ได้แค่นั้น สุดท้ายกู๋โส่ยแค่ยอมรับว่าตัวเองไม่ประสบความสำเร็จ และพยายามใช้ชีวิตในแบบของตัวเองต่อไป โดนด่าบ้าง อายบ้าง ผิดหวังบ้าง แต่ก็มีความสุขดีกับชีวิตที่โหลยโท่ยของตัวเอง ทำให้เราคิดว่าในครอบครัวมันก็มีคนหลายรูปแบบเราควรทำให้ครอบครัวเป็นพื้นที่ที่พร้อมโอบรับกับทุกความผิดหวังของทุกคน ",
-        gallery: [
-          "images/dakanda-1.jpg",
-          "images/dakanda-2.jpg",
-          "images/dakanda-3.jpg",
-          "images/dakanda-4.jpg",
-          "images/dakanda-5.jpg",
-          "images/dakanda-6.jpg"
-        ]
-      },
-
-      yun: {
-        name: "ยุ่น",
-        film: "ฟรีแลนซ์..ห้ามป่วย ห้ามพัก ห้ามรักหมอ",
-        category: "THAI FILM / OLD MEMORIES",
-        image: "images/yun.jpg",
-        description:
-          "ยุ่นเป็นกราฟิกดีไซเนอร์ฟรีแลนซ์ที่ใช้ชีวิตอยู่กับงาน กำหนดส่ง และความพยายามที่จะทำทุกอย่างให้ทันเวลา จนการทำงานกลายเป็นส่วนสำคัญที่แทบจะกำหนดชีวิตทั้งหมดของเขา เมื่อร่างกายเริ่มส่งสัญญาณเตือน เขาจึงต้องเผชิญกับข้อจำกัดที่ไม่สามารถแก้ไขได้ด้วยการฝืนตัวเอง",
-        quote:
-          "เราใช้เวลาทั้งหมดไปกับการทำงาน จนบางครั้งลืมถามตัวเองว่าไหวไหม",
-        memory:
-          "ยุ่นเป็นตัวละครที่สะท้อนชีวิตของคนทำงานสายกราฟิก โดยเฉพาะการทุ่มเทให้กับสิ่งที่รักจนลืมดูแลตัวเอง ตอนนั้นยังไม่ได้รู้จักอาชีพนี้มาก ตอนดูรู้สึกสงสัยไปหมด สงสัยว่าทำไมเค้าต้องจริงจังกับงานมากขนาดนั้น สงสัยว่ามันสนุกมั้ยการทำงานแบบที่อยู่แต่กับคอม งานมันเจ๋งได้มากแค่ไหน เขาทำให้เรานึกถึงคำถามง่าย ๆ ว่า หากเราทำงานจนไม่มีเวลาใช้ชีวิต แล้วความสำเร็จที่ได้มาจะมีความหมายยังไง ถ้าตายก่อนที่จะประสบความสำเร็จละมันจะไปคุ้มอะไร ตัวละครแสดงได้เข้าถึงบทบาทสุดๆ ยิ่งดูยิ่งขมวดคิ้วว่าจะทำอะไรนักหนางานเนี่ย ยากขนาดไหนกันเชียวถึงต้องทุ่มเทขนาดนั้น จนได้มาเจอกับตัวเองตอนที่เริ่มมาทำความรู้จักกราฟิก ว่ามันเป็นงานที่ต้องใช้อารมณ์ ความคิด ความรู้สึกอย่างมาก ไม่ได้เหนื่อยแค่ร่างกาย แต่จิดใจ รวมถึงสมองที่ต้องคิดอะไรที่มันสร้างสรรรค์ออกมาอยู่ตลอดมันเหนื่อยมากจริงๆ เลยเป็นตัวละครที่วนกลับไปให้นึกถึงตลอดเวลาที่เราทำงานหนักๆ ว่าเราต้องพักบ้าง ก่อนที่จะไม่เหลือเวลาชีวิตให้รักใครสักคน ",
-        gallery: [
-          "images/dakanda-1.jpg",
-          "images/dakanda-2.jpg",
-          "images/dakanda-3.jpg",
-          "images/dakanda-4.jpg",
-          "images/dakanda-5.jpg",
-          "images/dakanda-6.jpg"
-        ]
-      },
-
-      mo: {
-        name: "โหม๋",
-        film: "วิมานหนาม",
-        category: "THAI FILM / OLD MEMORIES",
-        image: "images/mo.jpg",
-        description:
-          "โหม๋เป็นหญิงสาวที่พยายามสร้างความมั่นคงให้กับชีวิตและครอบครัว ท่ามกลางความขัดแย้งเรื่องสิทธิในการเป็นเจ้าของบ้านและสวนทุเรียน เมื่อสิ่งที่ทุกคนต้องการกลายเป็นสิ่งเดียวกัน ความสัมพันธ์ในครอบครัวจึงเต็มไปด้วยการต่อรอง ความเจ็บปวด และการตัดสินใจที่ยากจะตัดสินจากมุมมองเดียว",
-        quote:
-          "เมื่อทุกคนต่างมีเหตุผลของตัวเอง ความถูกต้องอาจไม่ได้มีเพียงด้านเดียว",
-        memory:
-          "โหม๋เป็นตัวละครที่ทำให้เราตั้งคำถามถึงเส้นแบ่งระหว่างความจำเป็นกับความทะเยอทะยาน และความถูกต้องกับความต้องการส่วนตัว เธอสะท้อนให้เห็นว่าเมื่อชีวิตเต็มไปด้วยข้อจำกัด การตัดสินใจของคนคนหนึ่งอาจมีเหตุผลที่ซับซ้อนกว่าที่เรามองเห็น",
-        gallery: [
-          "images/dakanda-1.jpg",
-          "images/dakanda-2.jpg",
-          "images/dakanda-3.jpg",
-          "images/dakanda-4.jpg",
-          "images/dakanda-5.jpg",
-          "images/dakanda-6.jpg"
-        ]
-      },
-
-    };
-
-    const params = new URLSearchParams(window.location.search);
-    const characterId = params.get("id") || "dakanda";
-    const character = characters[characterId];
-
-    const mainImage = document.getElementById("mainImage");
-    const gallery = document.getElementById("characterGallery");
-
-    if (character) {
-      document.title = character.name + " | Characters That Stay";
-
-      document.getElementById("characterName").textContent =
-        character.name;
-      document.getElementById("characterSubtitle").textContent =
-        character.subtitle;
-      document.getElementById("filmName").textContent =
-        character.film;
-      document.getElementById("characterCategory").textContent =
-        character.category;
-      document.getElementById("characterDescription").textContent =
-        character.description;
-      document.getElementById("characterQuote").textContent =
-        "“" + character.quote + "”";
-      document.getElementById("characterMemory").textContent =
-        character.memory;
-
-      mainImage.src = character.image;
-      mainImage.alt = character.name;
-      mainImage.onerror = function () {
-        this.alt = "ไม่พบไฟล์ภาพหลัก กรุณาตรวจสอบชื่อไฟล์";
-      };
-
-      character.gallery.forEach((imagePath, index) => {
-        const image = document.createElement("img");
-        image.src = imagePath;
-        image.alt = character.name + " - moment " + (index + 1);
-        image.loading = "lazy";
-
-        image.onerror = function () {
-          this.classList.add("image-missing");
-          this.alt = "กรุณาเพิ่มรูป " + (index + 1) + " ในโฟลเดอร์ images";
-        };
-
-        image.addEventListener("click", () => {
-          mainImage.src = imagePath;
-          mainImage.alt = character.name + " - moment " + (index + 1);
-        });
-
-        gallery.appendChild(image);
-      });
-    } else {
-      document.getElementById("characterName").textContent =
-        "Character not found";
-      document.getElementById("characterDescription").textContent =
-        "ไม่พบข้อมูลตัวละคร กรุณาตรวจสอบ ID ของการ์ดในหน้า Collection";
-      document.getElementById("characterSubtitle").textContent = "";
-      document.getElementById("filmName").textContent = "";
-      document.getElementById("characterQuote").textContent = "";
-      document.getElementById("characterMemory").textContent = "";
-      mainImage.style.display = "none";
-    }
-  </script>
-
+    <script src="js/characters.js"></script>
+    <script src="js/detail.js"></script>
+    <script src="js/main.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,108 @@
+/* home.css — เฉพาะหน้า index.html (ใช้คู่กับ base.css) */
+
+.page-home {
+  --bg-height: calc(100% - 180px);
+}
+
+/* ---------- Hero ---------- */
+.home-hero {
+  position: relative;
+  min-height: 440px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px 0 38px;
+}
+.home-hero .lead { max-width: 620px; }
+
+.home-quote {
+  position: absolute;
+  top: 50%;
+  right: clamp(0px, 3vw, 40px);
+  max-width: 235px;
+  transform: translateY(-50%);
+  text-align: center;
+  color: rgba(255, 255, 255, .92);
+}
+.home-quote__mark {
+  font-family: var(--font-serif);
+  font-size: 45px;
+  line-height: .6;
+  opacity: .8;
+}
+.home-quote p {
+  margin: 8px 0 0;
+  font-family: var(--font-hand);
+  font-size: clamp(20px, 2vw, 27px);
+  line-height: 1.12;
+  transform: rotate(-4deg);
+}
+.home-quote__line {
+  display: block;
+  width: 36px;
+  height: 1px;
+  margin: 20px auto 0;
+  background: rgba(255, 255, 255, .7);
+}
+
+/* ---------- แถบ FILM · ANIME ---------- */
+.home-meta { padding-top: 20px; }
+.home-meta__star { margin-left: 10px; color: var(--accent); font-size: 14px; }
+
+/* ---------- การ์ด 4 ใบ ---------- */
+.home-strip { padding: 23px 0 28px; }
+
+.home-strip__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  font-size: 9px;
+  letter-spacing: .22em;
+}
+.home-strip__head > span { color: var(--muted); }
+.home-strip__head a span { margin-left: 9px; font-size: 15px; }
+
+.home-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.home-card { display: block; min-width: 0; }
+.home-card img {
+  width: 100%;
+  aspect-ratio: 1.8 / 1;
+  margin-bottom: 11px;
+  object-fit: cover;
+  background: var(--panel);
+  filter: saturate(.72);
+  transition: filter .3s ease, transform .3s ease;
+}
+.home-card:hover img { filter: saturate(1); transform: translateY(-3px); }
+
+.home-card__title {
+  font-family: var(--font-thai);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .08em;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .home-hero { min-height: 410px; }
+  .home-hero .lead { max-width: 530px; }
+  .home-cards { gap: 12px; }
+  .home-card__title { font-size: 10px; letter-spacing: .04em; }
+}
+
+@media (max-width: 620px) {
+  .page-home { --bg-height: calc(100% - 260px); }
+  .home-hero { min-height: 470px; padding-bottom: 30px; }
+  .home-quote { display: none; }
+  .home-meta { align-items: flex-start; line-height: 1.7; font-size: 7px; }
+  .home-meta > span:last-child { text-align: right; }
+  .home-strip { padding-top: 20px; }
+  .home-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 22px; }
+}

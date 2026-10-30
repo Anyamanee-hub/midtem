@@ -2,94 +2,113 @@
 <html lang="th">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stories | Characters That Stay</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&family=Caveat:wght@400;500&display=swap"
-        rel="stylesheet" <link rel="preconnect" href="https://fonts.googleapis.com">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Charmonman:wght@400;700&family=Noto+Sans+Thai:wght@100..900&family=Pattaya&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&family=Noto+Sans+Thai:wght@300;400;500;600&display=swap">
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="story.css">
+    <!-- base.css = ส่วนกลางทุกหน้า / pages/*.css = เฉพาะหน้านี้ -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/pages/story.css">
 </head>
 
-<body class="story-page">
-    <main class="story-shell">
-        <header class="site-header story-header">
+<body id="top" class="page-story" data-nav="story">
+    <div class="page-bg" aria-hidden="true"></div>
+
+    <!-- ===== HEADER (เหมือนกันทุกหน้า — เมนูที่ active มาจาก data-nav ของ body) ===== -->
+    <header class="site-header">
+        <div class="site-header__inner container">
             <a class="wordmark" href="index.html">CHARACTERS<br>THAT STAY</a>
-            <nav class="main-nav" aria-label="Main navigation"><a href="index.html">HOME</a><a class="active"
-                    href="story.html">STORY</a><a href="index.html#collection">COLLECTION</a><a
-                    href="index.html#about">ABOUT</a></nav>
-            <button class="menu-toggle" aria-label="Open menu" type="button">☰</button>
-        </header>
-        <section class="story-heading" id="story">
-            <h1>Stories That Stay</h1>
-            <p>ตัวละครแต่ละตัวทิ้งความรู้สึกที่แตกต่างกันไว้<br>ลองเลือกคอลเลกชันแล้วค้นหาเรื่องราวที่ตัวละครทิ้งไว้ดู
-            </p>
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="index.html" data-nav="home">HOME</a>
+                <a href="story.html" data-nav="story">STORY</a>
+                <a href="collang.html" data-nav="collection">COLLECTION</a>
+                <a href="#about">ABOUT</a>
+            </nav>
+            <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="story-heading">
+            <h1 class="display-title display-title--center">Stories That Stay</h1>
+            <p>ตัวละครแต่ละตัวทิ้งความรู้สึกที่แตกต่างกันไว้<br>ลองเลือกคอลเลกชันแล้วค้นหาเรื่องราวที่ตัวละครทิ้งไว้ดู</p>
         </section>
+
+        <!-- ปุ่มหมวด: ลำดับต้องตรงกับลำดับสไลด์ด้านล่าง -->
         <nav class="category-pills" aria-label="Choose a category">
-            <button class="pill is-active" data-slide="0">Thai films</button><button class="pill"
-                data-slide="1">Foreign Films</button><button class="pill" data-slide="2">Animation</button>
+            <button class="pill" type="button">Thai Films</button>
+            <button class="pill" type="button">Foreign Films</button>
+            <button class="pill" type="button">Animation</button>
         </nav>
-        <section class="category-carousel" aria-label="Browse story categories">
-            <button class="carousel-arrow prev" type="button" aria-label="Previous category">←</button>
-            <div class="carousel-viewport">
-                <div class="carousel-track">
-                    
-                    <article class="category-slide" data-index="0">
-                        <a class="slide-image"
-                        href="thaifilm.html">
-                            <img src="images/nam.jpg"alt="The Growing Ones collection"></a>
-                        <div class="slide-copy"><span class="category-number">01 / COLLECTION</span>
-                            <h2>Thai films Characters </h2>
+
+        <section class="carousel" aria-label="Browse story categories">
+            <button class="carousel__arrow carousel__arrow--prev" type="button" aria-label="Previous category">←</button>
+
+            <div class="carousel__viewport">
+                <div class="carousel__track">
+
+                    <article class="carousel__slide">
+                        <a class="carousel__image" href="thaifilm.html">
+                            <img src="images/nam.jpg" alt="Thai Films collection">
+                            <span class="carousel__cta">EXPLORE ↗</span>
+                        </a>
+                        <div class="carousel__copy">
+                            <span class="carousel__number">01 / COLLECTION</span>
+                            <h2>Thai Films Characters</h2>
                             <p>ตัวละครไทยที่สื่อสารเรื่องราวใกล้ตัว</p>
                         </div>
                     </article>
-                    <article class="category-slide" data-index="1"><a class="slide-image"
-                            href="index.html#collection"><img src="images/forrest.jpg"
-                                alt="The Misunderstood collection"></a>
-                        <div class="slide-copy"><span class="category-number">02 / COLLECTION</span>
-                            <h2>Foreign Films Characters </h2>
+
+                    <article class="carousel__slide">
+                        <a class="carousel__image" href="foreignfilm.html">
+                            <img src="images/forrest.jpg" alt="Foreign Films collection">
+                            <span class="carousel__cta">EXPLORE ↗</span>
+                        </a>
+                        <div class="carousel__copy">
+                            <span class="carousel__number">02 / COLLECTION</span>
+                            <h2>Foreign Films Characters</h2>
                             <p>ตัวละครต่างประเทศที่ยิ่งดู ก็ยิ่งรู้สึกชอบ</p>
                         </div>
                     </article>
-                    <article class="category-slide" data-index="2"><a class="slide-image"
-                            href="index.html#collection"><img src="images/violet.jpg"
-                                alt="The Ones Who Stay collection"></a>
-                        <div class="slide-copy"><span class="category-number">03 / COLLECTION</span>
-                            <h2> Animation Characters </h2>
-                            <p>อนิเมชั่นที่ตัวละครดีจนลืมไม่ลง</p><span class="category-note"
+
+                    <article class="carousel__slide">
+                        <a class="carousel__image" href="animation.html">
+                            <img src="images/violet.jpg" alt="Animation collection">
+                            <span class="carousel__cta">EXPLORE ↗</span>
+                        </a>
+                        <div class="carousel__copy">
+                            <span class="carousel__number">03 / COLLECTION</span>
+                            <h2>Animation Characters</h2>
+                            <p>อนิเมชั่นที่ตัวละครดีจนลืมไม่ลง</p>
                         </div>
                     </article>
 
                 </div>
             </div>
-            <button class="carousel-arrow next" type="button" aria-label="Next category">→</button>
+
+            <button class="carousel__arrow carousel__arrow--next" type="button" aria-label="Next category">→</button>
         </section>
-        <div class="carousel-footer"><span class="carousel-count"><b id="current-number">01</b> <span>/ 03</span></span>
-            <div class="carousel-dots" aria-label="Select category"><button class="dot is-active" data-slide="0"
-                    aria-label="Category 1"></button><button class="dot" data-slide="1"
-                    aria-label="Category 2"></button><button class="dot" data-slide="2"
-                    aria-label="Category 3"></button><button class="dot" data-slide="3"
-                    aria-label="Category 4"></button></div><span class="swipe-hint">USE ARROWS TO EXPLORE</span>
+
+        <div class="carousel__footer">
+            <span class="carousel__count"><b id="carouselCurrent">01</b> <span id="carouselTotal">/ 03</span></span>
+            <div class="carousel__dots" aria-label="Select category"><!-- JS สร้างจุดให้อัตโนมัติ --></div>
+            <span class="carousel__hint">USE ARROWS TO EXPLORE</span>
         </div>
-        <footer class="site-footer" id="about"><span>CHARACTERS THAT STAY</span><span>ANYAMANEE POKAMAS &amp;
-                68005463</span><a href="#story">BACK TO TOP ↑</a></footer>
     </main>
-    <script>
-        const menuButton = document.querySelector('.menu-toggle'); const nav = document.querySelector('.main-nav'); menuButton.addEventListener('click', () => nav.classList.toggle('open'));
-        const track = document.querySelector('.carousel-track'); const slides = [...document.querySelectorAll('.category-slide')]; const pills = [...document.querySelectorAll('.category-pills .pill')]; const dots = [...document.querySelectorAll('.dot')]; let active = 0;
-        function showSlide(index) { active = (index + slides.length) % slides.length; track.style.transform = `translateX(-${active * 100}%)`; slides.forEach((s, i) => s.classList.toggle('is-active', i === active)); pills.forEach((b, i) => b.classList.toggle('is-active', i === active)); dots.forEach((b, i) => b.classList.toggle('is-active', i === active)); document.querySelector('#current-number').textContent = String(active + 1).padStart(2, '0'); }
-        document.querySelector('.carousel-arrow.next').addEventListener('click', () => showSlide(active + 1)); document.querySelector('.carousel-arrow.prev').addEventListener('click', () => showSlide(active - 1)); pills.forEach(b => b.addEventListener('click', () => showSlide(Number(b.dataset.slide)))); dots.forEach(b => b.addEventListener('click', () => showSlide(Number(b.dataset.slide))));
-        let startX = 0; const viewport = document.querySelector('.carousel-viewport'); viewport.addEventListener('touchstart', e => { startX = e.touches[0].clientX }, { passive: true }); viewport.addEventListener('touchend', e => { const delta = e.changedTouches[0].clientX - startX; if (Math.abs(delta) > 45) showSlide(active + (delta < 0 ? 1 : -1)) }, { passive: true }); showSlide(0);
-    </script>
+
+    <!-- ===== FOOTER (เหมือนกันทุกหน้า) ===== -->
+    <footer class="site-footer" id="about">
+        <span>CHARACTERS THAT STAY</span>
+        <span>ANYAMANEE POKAMAS &amp; 68005463</span>
+        <a href="#top">BACK TO TOP ↑</a>
+    </footer>
+
+    <script src="js/story.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

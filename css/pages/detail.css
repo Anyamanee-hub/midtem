@@ -1,0 +1,165 @@
+/* detail.css — เฉพาะหน้า character-detail.html (ใช้คู่กับ base.css)
+   ทุก class ขึ้นต้นด้วย detail- เพื่อไม่ชนกับหน้าอื่น */
+
+.page-detail {
+  --bg-height: 420px;
+  --bg-opacity: .45;
+}
+
+/* ---------- ภาพซ้าย / ข้อความขวา ---------- */
+.detail {
+  display: grid;
+  grid-template-columns: minmax(0, .82fr) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(36px, 6vw, 88px);
+  max-width: 1320px;
+  margin: 0 auto;
+  padding-block: 58px 24px;
+}
+
+.detail__media { min-width: 0; }
+.detail__image {
+  max-width: 490px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #202724;
+}
+.detail__image img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+.detail__caption {
+  margin: 12px 0 0;
+  font-size: 9px;
+  letter-spacing: .15em;
+  color: var(--muted);
+}
+
+.detail__content { min-width: 0; padding-top: 8px; }
+.detail__content .eyebrow { margin-left: 0; margin-bottom: 18px; line-height: 1.8; }
+
+.detail__name {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(40px, 5vw, 68px);
+  font-weight: 500;
+  line-height: 1.15;
+}
+.detail__subtitle {
+  margin: 8px 0 0;
+  font-family: var(--font-hand);
+  font-size: 25px;
+  color: var(--muted);
+}
+.detail__subtitle:empty { display: none; }
+
+.detail__rule {
+  margin: 24px 0 22px;
+  border-top: 1px solid var(--line);
+}
+
+.detail__film { margin-bottom: 30px; }
+.detail__label {
+  margin: 0 0 12px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .16em;
+  color: var(--accent);
+}
+.detail__film .detail__label { margin-bottom: 8px; font-size: 9px; }
+.detail__film p {
+  margin: 0;
+  font-family: var(--font-thai);
+  font-size: 13px;
+}
+
+.detail__text {
+  margin: 0;
+  font-family: var(--font-thai);
+  font-size: 13px;
+  line-height: 2;
+  color: var(--muted);
+}
+
+.detail__quote {
+  margin: 26px 0;
+  padding: 18px 0 18px 18px;
+  border-left: 2px solid var(--accent);
+  font-family: var(--font-thai);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.detail__memory { margin-top: 28px; }
+
+/* ส่วนที่ยังไม่มีข้อความ จะถูก JS ใส่ hidden ไว้ */
+[hidden] { display: none !important; }
+
+/* ---------- Gallery ---------- */
+.detail-gallery {
+  max-width: 1320px;
+  margin: 36px auto 90px;
+}
+.detail-gallery__head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.detail-gallery__head .eyebrow { margin: 0 0 5px; }
+.detail-gallery__head h2 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(27px, 3vw, 38px);
+  font-weight: 400;
+}
+.detail-gallery__count {
+  margin: 0 0 5px;
+  font-size: 9px;
+  letter-spacing: .14em;
+  white-space: nowrap;
+  color: var(--muted);
+}
+
+.detail-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.detail-gallery__grid button {
+  padding: 0;
+  border: 0;
+  background: #202724;
+  cursor: pointer;
+}
+.detail-gallery__grid img {
+  width: 100%;
+  aspect-ratio: 5 / 3;
+  object-fit: cover;
+  transition: opacity .25s ease;
+}
+.detail-gallery__grid button:hover img { opacity: .76; }
+.detail-gallery__grid .is-missing {
+  outline: 1px solid var(--line);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 850px) {
+  .detail { gap: 32px; padding-top: 40px; }
+  .detail-gallery__grid { gap: 12px; }
+}
+
+@media (max-width: 650px) {
+  .detail { grid-template-columns: 1fr; gap: 28px; padding-top: 28px; }
+  .detail__image { max-width: 420px; }
+  .detail__content { padding-top: 0; }
+  .detail__name { font-size: 48px; }
+  .detail-gallery { margin: 28px auto 60px; }
+  .detail-gallery__grid { gap: 8px; }
+  .detail-gallery__head h2 { font-size: 27px; }
+  .detail-gallery__count { font-size: 8px; }
+}

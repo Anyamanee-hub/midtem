@@ -1,0 +1,326 @@
+/* =========================================================
+   base.css — ส่วนกลางของ "ทุกหน้า"
+   ---------------------------------------------------------
+   ไฟล์นี้มีแค่ของที่ใช้ร่วมกันจริง ๆ:
+     1. ตัวแปรสี / ฟอนต์ / ระยะ   (แก้ตรงนี้ = เปลี่ยนทั้งเว็บ)
+     2. reset พื้นฐาน
+     3. พื้นหลังภาพ hero (.page-bg)
+     4. header + เมนู + footer
+     5. คอมโพเนนต์เล็กที่หลายหน้าใช้ (.eyebrow, .display-title, .lead,
+        .text-link, .section-bar, .pill)
+
+   กฎสำคัญ: ห้ามเขียน selector แบบแท็กเปล่า ๆ เช่น h1 { } หรือ p { }
+   ในไฟล์นี้ เพราะจะไปทับทุกหน้า ให้ใช้ class เสมอ
+   สไตล์เฉพาะหน้าให้ไปเขียนใน css/pages/<ชื่อหน้า>.css
+   ========================================================= */
+
+/* ---------- 1. Tokens ---------- */
+:root {
+  /* สี */
+  --bg: #111716;
+  --panel: #17201f;
+  --ink: #f7f3ec;
+  --muted: rgba(247, 243, 236, 0.72);
+  --faint: rgba(247, 243, 236, 0.55);
+  --line: rgba(247, 243, 236, 0.28);
+  --line-soft: rgba(247, 243, 236, 0.16);
+  --accent: #c6d8d4;      /* ตัวเลข / ป้ายเล็ก */
+  --accent-2: #91cede;    /* ชื่อตัวละครบนการ์ด */
+  --highlight: #dcff4e;   /* หัวข้อลายมือสีเขียวมะนาว */
+  --teal: #57baa8;
+
+  /* ฟอนต์ */
+  --font-body: "DM Sans", "Noto Sans Thai", sans-serif;
+  --font-thai: "Noto Sans Thai", sans-serif;
+  --font-serif: "Cormorant Garamond", "Noto Sans Thai", serif;
+  --font-hand: "Caveat", cursive;
+
+  /* ระยะขอบซ้าย-ขวาของทั้งเว็บ (ใช้ตัวเดียวทุกหน้า) */
+  --pad: clamp(24px, 5.4vw, 86px);
+  --header-h: 96px;
+}
+
+@media (max-width: 900px) {
+  :root { --pad: 28px; }
+}
+@media (max-width: 620px) {
+  :root { --pad: 20px; --header-h: 76px; }
+}
+
+/* ---------- 2. Reset ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+.container { padding-inline: var(--pad); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; }
+}
+
+/* ---------- 3. พื้นหลังภาพด้านบน ----------
+   ใส่ <div class="page-bg" aria-hidden="true"></div> ไว้ใต้ <body>
+   แต่ละหน้าปรับได้ด้วยตัวแปร (ตั้งที่ body ของหน้านั้น):
+     --bg-height   ความสูงของภาพ (เช่น 760px หรือ 100% = ยาวทั้งหน้า)
+     --bg-opacity  ความเข้มของภาพ
+     --shade-left / --shade-right  ความมืดของเงาด้านซ้าย / ขวา */
+.page-bg {
+  position: absolute;
+  z-index: -1;
+  inset: 0 0 auto;
+  height: var(--bg-height, 760px);
+  overflow: hidden;
+  pointer-events: none;
+}
+.page-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../images/hero3.png") center 42% / cover no-repeat;
+  opacity: var(--bg-opacity, 1);
+}
+.page-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg,
+      rgba(9, 16, 17, var(--shade-left, .82)) 0%,
+      rgba(12, 19, 20, .55) 39%,
+      rgba(12, 18, 18, var(--shade-right, .12)) 72%,
+      rgba(12, 18, 18, .36) 100%),
+    linear-gradient(180deg,
+      rgba(7, 12, 13, .48) 0%,
+      transparent 20%,
+      transparent 47%,
+      rgba(10, 17, 17, .9) 73%,
+      var(--bg) 100%);
+}
+
+/* ---------- 4. Header / เมนู ---------- */
+.site-header {
+  position: relative;
+  z-index: 10;
+  border-bottom: 1px solid var(--line-soft);   /* เส้นยาวเต็มจอทุกหน้า */
+}
+.site-header__inner {
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.wordmark {
+  font-size: 10px;
+  line-height: 1.65;
+  letter-spacing: .27em;
+  font-weight: 500;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(22px, 3vw, 48px);
+}
+.main-nav a {
+  font-size: 10px;
+  letter-spacing: .18em;
+  color: var(--muted);
+  transition: color .25s ease;
+}
+.main-nav a:hover,
+.main-nav a.is-active { color: #fff; }
+.main-nav a.is-active::after {
+  content: "";
+  display: block;
+  height: 1px;
+  margin-top: 7px;
+  background: currentColor;
+}
+
+.menu-toggle { display: none; }
+
+@media (max-width: 620px) {
+  .wordmark { font-size: 9px; }
+
+  .menu-toggle {
+    display: block;
+    width: 38px;
+    height: 34px;
+    border: 1px solid var(--line);
+    background: rgba(0, 0, 0, .15);
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: calc(var(--header-h) - 8px);
+    right: var(--pad);
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 18px;
+    padding: 20px;
+    background: rgba(13, 20, 20, .96);
+    border: 1px solid var(--line);
+  }
+  .main-nav.is-open { display: flex; }
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px 20px;
+  margin-inline: var(--pad);
+  padding: 20px 0 26px;
+  border-top: 1px solid var(--line-soft);
+  color: var(--faint);
+  font-size: 8px;
+  letter-spacing: .17em;
+}
+.site-footer a { color: var(--accent); }
+
+@media (max-width: 620px) {
+  .site-footer { font-size: 7px; }
+  .site-footer span:nth-child(2) { display: none; }
+}
+
+/* ---------- 5. คอมโพเนนต์ที่ใช้หลายหน้า ---------- */
+
+/* ป้ายเล็กเหนือหัวข้อ */
+.eyebrow {
+  margin: 0 0 22px 5px;
+  font-size: 9px;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* หัวข้อใหญ่ลายมือ (แทน h1 { } เดิมที่ไปทับทุกหน้า)
+   ใช้: <h1 class="display-title">บรรทัดแรก <span>บรรทัดรอง</span></h1>
+   ตัวปรับ: --inline (หน้า collection), --center (หน้า story) */
+.display-title {
+  margin: 0;
+  font-family: var(--font-hand);
+  font-size: clamp(68px, 8.4vw, 130px);
+  font-weight: 400;
+  line-height: .76;
+  letter-spacing: -.045em;
+  color: var(--highlight);
+  text-shadow: 0 4px 28px rgba(0, 0, 0, .15);
+  transform: rotate(-3deg);
+}
+.display-title span {
+  display: inline-block;
+  margin-left: 90px;
+  font-size: .8em;
+  white-space: nowrap;
+}
+
+.display-title--inline { font-size: clamp(56px, 7vw, 104px); }
+.display-title--inline span { margin-left: .15em; }
+
+.display-title--center {
+  font-size: clamp(62px, 8vw, 112px);
+  line-height: .88;
+  text-align: center;
+  transform: rotate(-2deg);
+}
+
+@media (max-width: 620px) {
+  .display-title { font-size: clamp(52px, 14vw, 95px); }
+  .display-title span { margin-left: 18px; }
+  .display-title--inline { font-size: clamp(40px, 12vw, 64px); }
+  .display-title--inline span { margin-left: .15em; }
+  .display-title--center { font-size: clamp(56px, 14vw, 82px); }
+}
+
+/* ย่อหน้าแนะนำใต้หัวข้อ */
+.lead {
+  margin: 50px 0 0 7px;
+  font-family: var(--font-thai);
+  font-size: clamp(16px, 1.3vw, 19px);
+  line-height: 1.55;
+  letter-spacing: .025em;
+  color: rgba(255, 255, 255, .88);
+}
+@media (max-width: 620px) {
+  .lead { margin-top: 30px; font-size: 16px; }
+  .lead br { display: none; }
+}
+
+/* ลิงก์ขีดเส้นใต้ เช่น ← BACK TO STORY */
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  width: fit-content;
+  margin: 28px 0 0 7px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--line);
+  font-size: 9px;
+  letter-spacing: .2em;
+  transition: gap .25s ease, color .25s ease;
+}
+.text-link:hover { gap: 19px; color: var(--accent-2); }
+
+/* แถบข้อความเล็กซ้าย-ขวา + เส้นใต้ */
+.section-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+  font-size: 8px;
+  letter-spacing: .2em;
+  color: var(--muted);
+}
+
+/* ปุ่มแคปซูล (หมวดหมู่ / ตัวกรอง) */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 10px 16px;
+  border: 1px solid rgba(247, 243, 236, .38);
+  border-radius: 99px;
+  background: rgba(10, 16, 16, .22);
+  backdrop-filter: blur(8px);
+  color: rgba(247, 243, 236, .82);
+  font: 9px var(--font-body);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: .2s;
+}
+.pill:hover,
+.pill.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #17201f;
+}

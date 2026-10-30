@@ -1,111 +1,92 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="th">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&family=Caveat:wght@400;500&display=swap"
-      rel="stylesheet"
-      <link rel="preconnect" href="https://fonts.googleapis.com">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Characters That Stay</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Charmonman:wght@400;700&family=Noto+Sans+Thai:wght@100..900&family=Pattaya&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css" />
-  </head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&family=Noto+Sans+Thai:wght@300;400;500;600&display=swap">
 
-  <body>
-    <main class="screen">
-      <div class="hero-image"></div>
-      <div class="shade"></div>
+    <!-- base.css = ส่วนกลางทุกหน้า / pages/*.css = เฉพาะหน้านี้ -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/pages/home.css">
+</head>
 
-      <header class="site-header">
-        <a class="wordmark" href="index.html" aria-label="Personal Collection">
-          PERSONAL <br />COLLECTION
-        </a>
+<body id="top" class="page-home" data-nav="home">
+    <div class="page-bg" aria-hidden="true"></div>
 
-        <nav class="main-nav" aria-label="Main navigation">
-          <a class="active" href="#home">HOME</a>
-          <a href="story.html">STORY</a>
-          <a href="#collection">COLLECTION</a>
-          <a href="#about">ABOUT</a>
-        </nav>
-
-        <button class="menu-toggle" aria-label="Open menu" type="button">
-          ☰
-        </button>
-      </header>
-
-      <section class="hero-content" id="home">
-        <h1>Characters<br /><span>That Stay Memories</span></h1>
-        <p class="intro">
-          คอลเลคชั่นที่รวมตัวละครจากภาพยนตร์และอนิเมะที่ยังอยู่ในความทรงจำ <br
-            class="desktop-break"
-          />
-          ไม่ใช่แค่เพราะมันสนุก แต่เพราะความรู้สึกที่ตัวละครทิ้งไว้มันน่าจดจำ
-        </p>
-      </section>
-
-      <aside class="quote">
-        <span class="quote-mark">“</span>
-        <p>Some characters leave the screen,<br />but never leave us</p>
-        <span class="quote-line"></span>
-      </aside>
-
-      <div class="hero-meta">
-        <span
-          >FILM&nbsp;&nbsp; · &nbsp;&nbsp;ANIME&nbsp;&nbsp; ·
-          &nbsp;&nbsp;PERSONAL ARCHIVE</span
-        >
-        <span class="meta-right">A COLLECTION OF FEELINGS <span>✳</span></span>
-      </div>
-
-      <section
-        class="film-strip"
-        id="collection"
-        aria-label="Collection categories"
-      >
-        <div class="strip-heading">
-          <span>START EXPLORING</span>
-          <a href="#story">VIEW ALL <span>↗</span></a>
+    <!-- ===== HEADER (เหมือนกันทุกหน้า — เมนูที่ active มาจาก data-nav ของ body) ===== -->
+    <header class="site-header">
+        <div class="site-header__inner container">
+            <a class="wordmark" href="index.html">CHARACTERS<br>THAT STAY</a>
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="index.html" data-nav="home">HOME</a>
+                <a href="story.html" data-nav="story">STORY</a>
+                <a href="collang.html" data-nav="collection">COLLECTION</a>
+                <a href="#about">ABOUT</a>
+            </nav>
+            <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
         </div>
-        <div class="cards">
-          <a class="film-card card-one" href="#story">
-            <span class="card-image"></span>
-            <span class="card-title">"น้องน้ำ"ของพี่โชน</span>
-            <span class="card-subtitle"></span>    <!-- คำตัวเล็กๆอธิบายจ้า -->
-          </a>
-          <a class="film-card card-two" href="#story">
-            <span class="card-image"></span>
-            <span class="card-title">อาวุธสงครามที่ไร้ความรู้สึก</span>
-            <span class="card-subtitle"></span>
-          </a>
-          <a class="film-card card-three" href="#story">
-            <span class="card-image"></span>
-            <span class="card-title">ชายผู้ใช้ชีวิตด้วยความจริงใจ</span>
-            <span class="card-subtitle"></span>
-          </a>
-          <a class="film-card card-four" href="#story">
-            <span class="card-image"></span>
-            <span class="card-title">คุณค่าของช่วงเวลา และความผูกผัน</span>
-            <span class="card-subtitle"></span>
-          </a>
-        </div>
-      </section>
+    </header>
 
-      <footer class="site-footer" id="about">
-        <span>CHARACTERS THAT STAY</span>
-        <span>ANYAMANEE POKAMAS &amp; 68005463</span>
-        <a href="#home">BACK TO TOP ↑</a>
-      </footer>
+    <main class="container">
+        <section class="home-hero" id="home">
+            <h1 class="display-title">Characters<br><span>That Stay Memories</span></h1>
+            <p class="lead">
+                คอลเลคชั่นที่รวมตัวละครจากภาพยนตร์และอนิเมะที่ยังอยู่ในความทรงจำ<br>
+                ไม่ใช่แค่เพราะมันสนุก แต่เพราะความรู้สึกที่ตัวละครทิ้งไว้มันน่าจดจำ
+            </p>
+
+            <aside class="home-quote">
+                <span class="home-quote__mark">“</span>
+                <p>Some characters leave the screen,<br>but never leave us</p>
+                <span class="home-quote__line"></span>
+            </aside>
+        </section>
+
+        <div class="section-bar home-meta">
+            <span>FILM&nbsp;&nbsp; · &nbsp;&nbsp;ANIME&nbsp;&nbsp; · &nbsp;&nbsp;PERSONAL ARCHIVE</span>
+            <span>A COLLECTION OF FEELINGS <span class="home-meta__star">✳</span></span>
+        </div>
+
+        <section class="home-strip" id="collection" aria-label="Start exploring">
+            <div class="home-strip__head">
+                <span>START EXPLORING</span>
+                <a href="collang.html">VIEW ALL <span>↗</span></a>
+            </div>
+
+            <div class="home-cards">
+                <a class="home-card" href="character-detail.html?id=nam">
+                    <img src="images/nam.jpg" alt="น้ำ — สิ่งเล็ก ๆ ที่เรียกว่ารัก">
+                    <span class="home-card__title">"น้องน้ำ" ของพี่โชน</span>
+                </a>
+                <a class="home-card" href="character-detail.html?id=violet">
+                    <img src="images/violet.jpg" alt="ไวโอเลต">
+                    <span class="home-card__title">อาวุธสงครามที่ไร้ความรู้สึก</span>
+                </a>
+                <a class="home-card" href="character-detail.html?id=forrest">
+                    <img src="images/forrest.jpg" alt="ฟอร์เรสท์ กัมพ์">
+                    <span class="home-card__title">ชายผู้ใช้ชีวิตด้วยความจริงใจ</span>
+                </a>
+                <a class="home-card" href="character-detail.html?id=gin-hotaru">
+                    <img src="images/gin_hotaru.jpg" alt="กินและโฮตารุ">
+                    <span class="home-card__title">คุณค่าของช่วงเวลา และความผูกพัน</span>
+                </a>
+            </div>
+        </section>
     </main>
 
-    <script>
-      const menuButton = document.querySelector(".menu-toggle");
-      const nav = document.querySelector(".main-nav");
-      menuButton.addEventListener("click", () => nav.classList.toggle("open"));
-    </script>
-  </body>
+    <!-- ===== FOOTER (เหมือนกันทุกหน้า) ===== -->
+    <footer class="site-footer" id="about">
+        <span>CHARACTERS THAT STAY</span>
+        <span>ANYAMANEE POKAMAS &amp; 68005463</span>
+        <a href="#top">BACK TO TOP ↑</a>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
 </html>
