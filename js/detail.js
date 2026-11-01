@@ -40,6 +40,10 @@
   });
 
   // แกลเลอรี
+  function getGallery(character) {
+  return GALLERIES[character.id] || [];
+  }
+
   const gallery = getGallery(character);
   $("#detailGalleryCount").textContent =
     `${String(gallery.length).padStart(2, "0")} / MOMENTS`;
