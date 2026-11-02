@@ -1,0 +1,269 @@
+
+/* ==========================
+   ABOUT EDITORIAL SECTION
+========================== */
+
+.about-editorial {
+  position: relative;
+  max-width: 90%;
+  margin: 70px auto;
+  padding: 40px 8%;
+  background: rgba(23, 23, 23, 0.542);
+  box-sizing: border-box;
+}
+
+/* TITLE */
+
+.about-title {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 35px;
+}
+
+.about-title-line {
+  width: 60px;
+  height: 2px;
+  background: #fefffe;
+  flex-shrink: 0;
+}
+
+.about-title h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+  color: #ffffff;
+}
+.about-title P {
+  font-family: 'Caveat', serif;
+  font-size: 30px;
+  font-weight: 100;
+  line-height: 1.2;
+  margin: 0;
+  color: #c8ed27;
+}
+
+
+
+/* CONTENT LAYOUT */
+
+.about-content {
+  display: grid;
+  grid-template-columns: 3fr 3fr;
+  gap: 50px;
+  align-items: start;
+}
+
+/* LEFT IMAGE */
+
+.about-main-image {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+}
+
+.about-main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* RIGHT SIDE */
+
+.about-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.about-description {
+  font-family: 'Noto Sans Thai', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #c5c7c7;
+  margin: 0 0 30px;
+}
+
+
+@keyframes aboutRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* SECOND IMAGE */
+
+.about-secondary-image {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.about-secondary-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+  
+}
+
+.about-secondary-image:hover img {
+  transform: scale(1.04);
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+  .about-editorial {
+    padding: 30px 6%;
+    margin: 35px auto;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .about-main-image {
+    height: 250px;
+  }
+
+  .about-title h1 {
+    font-size: 30px;
+  }
+
+  .about-decoration {
+    right: 7%;
+  }
+}
+
+/* SECOND EDITORIAL SECTION */
+
+.about-editorial-reverse {
+  margin-top: 100px;
+}
+
+/* CENTER HEADING */
+
+.about-section-heading {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.about-section-heading > span {
+  display: block;
+  width: 45px;
+  height: 2px;
+  background: #c8ed27;
+  margin: 0 auto 15px;
+}
+
+.about-section-heading h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color:  #c8ed27;
+}
+
+.about-section-heading p {
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* REVERSE LEFT-RIGHT */
+
+.about-editorial-reverse .about-content {
+  grid-template-columns: 0.95fr 1.05fr;
+  align-items: center;
+}
+
+.about-editorial-reverse .about-side {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.about-editorial-reverse .about-main-image {
+  grid-column: 2;
+  grid-row: 1;
+  height: 320px;
+}
+
+@media (max-width: 650px) {
+  .about-editorial-reverse .about-content {
+    grid-template-columns: 1fr;
+  }
+
+  .about-editorial-reverse .about-side {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .about-editorial-reverse .about-main-image {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+/* SECTION 03 */
+
+.about-editorial-third {
+  margin-top: 100px;
+}
+
+.about-editorial-third .about-content {
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 50px;
+}
+
+/* LEFT IMAGE */
+
+.about-editorial-third .about-main-image {
+  grid-column: 1;
+  grid-row: 1;
+  height: 320px;
+}
+
+/* RIGHT CONTENT */
+
+.about-editorial-third .about-side {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+/* HEADING ALIGN RIGHT */
+
+.about-editorial-third .about-section-heading {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.about-editorial-third .about-section-heading > span {
+  margin-left: 0;
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+  .about-editorial-third .about-content {
+    grid-template-columns: 1fr;
+  }
+
+  .about-editorial-third .about-main-image {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .about-editorial-third .about-side {
+    grid-column: 1;
+    grid-row: 2;
+  }
+}
+
